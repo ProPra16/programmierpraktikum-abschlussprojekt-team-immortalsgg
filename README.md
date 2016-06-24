@@ -14,5 +14,4 @@ Falls ihr Windows10 benutzt kÃ¶nnt ihr euch den PreviewBuild holen build 14367
 Ich hab die installiert , ausprobiert und tatsÃ¤chlich kann man auch schon git darunter verwenden! 
 _____________________________________
 Travis:
-
-https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-team-immortalsgg.svg?branch=master
+[![Build Status](https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-team-immortalsgg.svg?branch=master)](https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-team-immortalsgg.svg?branch=master)
