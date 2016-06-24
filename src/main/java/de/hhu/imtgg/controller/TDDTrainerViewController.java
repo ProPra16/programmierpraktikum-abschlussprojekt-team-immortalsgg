@@ -1,7 +1,6 @@
 package de.hhu.imtgg.controller;
 
 import de.hhu.imtgg.TDDTMain;
-import de.hhu.imtgg.compiler.TDDCompilerCheck;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 

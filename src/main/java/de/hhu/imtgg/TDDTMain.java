@@ -18,8 +18,8 @@ public class TDDTMain extends Application {
 	
 	@Override
 	public void start(Stage stage) {
-		this.primarystage = stage;
-		this.primarystage.setTitle("TDD Trainer by Team ImmortalsGG");
+		TDDTMain.primarystage = stage;
+		TDDTMain.primarystage.setTitle("TDD Trainer by Team ImmortalsGG");
 		
 		initTDDTViewLayout();
 	}
