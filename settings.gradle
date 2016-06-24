@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'Project7IMTGG'
+rootProject.name = 'programmierpraktikum-absclussprojekt-team-immortalsgg'
