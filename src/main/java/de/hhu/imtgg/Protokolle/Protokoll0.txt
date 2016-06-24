@@ -1,0 +1,9 @@
+Protokoll 0 -
+
+Woche 20.6 - 27.6 : 
+
+In dieser Woche haben wir das Team ImmortalsGG gegründet.
+Es besteht aus Roman , Helge , Carlo und Alex.
+Wir haben eine Whatsapp Gruppe gegründet um dort weitere Organisatorische Details zubesprechen.
+Diese Woche kamen wir nicht dazu uns persönlich zutreffen, dennoch haben wir die Termine für spätere Treffen ausgemacht.Unsere wöchentlichen Treffen finden immer Dienstags 10:15 statt.
+In GitHub wurde ein Repository erstellt und auch schon ein GUI hinzugefügt.(Stand 24.06)
