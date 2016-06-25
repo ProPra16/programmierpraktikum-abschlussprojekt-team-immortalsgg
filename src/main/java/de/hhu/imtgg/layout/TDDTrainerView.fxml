@@ -9,7 +9,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hhu.imtgg.controller.TDDTrainerViewController">
    <right>
-      <Button mnemonicParsing="false" onAction="#testCodeSaveButtonPressed" text="Save" BorderPane.alignment="CENTER" />
+      <Button fx:id="rightSaveButton" mnemonicParsing="false" onAction="#testCodeSaveButtonPressed" text="Save" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hier folgt status etc sonstiges" BorderPane.alignment="CENTER" />
@@ -34,8 +34,8 @@
       <AnchorPane prefHeight="383.0" prefWidth="32.0" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="4.0" layoutY="2.0" mnemonicParsing="false" onAction="#pressedBackButton" text="&lt;-Back" AnchorPane.topAnchor="2.0" />
-            <Button layoutX="10.0" layoutY="171.0" mnemonicParsing="false" onAction="#sourceCodeSaveButtonPressed" text="Save" />
-            <Button layoutY="204.0" mnemonicParsing="false" onAction="#refactorButtonPressed" text="Refactor" />
+            <Button fx:id="leftSaveButton" layoutX="10.0" layoutY="171.0" mnemonicParsing="false" onAction="#sourceCodeSaveButtonPressed" text="Save" />
+            <Button fx:id="refactorButton" layoutY="204.0" mnemonicParsing="false" onAction="#refactorButtonPressed" text="Refactor" />
          </children>
       </AnchorPane>
    </left>

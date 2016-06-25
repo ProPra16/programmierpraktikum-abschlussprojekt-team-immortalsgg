@@ -4,10 +4,11 @@ import java.util.Optional;
 
 import de.hhu.imtgg.TDDTMain;
 import de.hhu.imtgg.compiler.TDDCompiler;
+import de.hhu.imtgg.objects.TDDAlert;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 
@@ -15,10 +16,13 @@ public class TDDTrainerViewController {
 	
 	@FXML private TextArea testCode;
 	@FXML private TextArea sourceCode;
+	@FXML private Button leftSaveButton;
+	@FXML private Button rightSaveButton;
+	@FXML private Button refactorButton;
 	
-	private boolean writeafailtest = true; // booleans fuer den status der gerade ist
-	private boolean makethetestpass = false;
-	private boolean refactor = false;
+	private static boolean writeafailtest = true; // booleans fuer den status der gerade ist
+	private static boolean makethetestpass = false;
+	private static boolean refactor = false;
 	
 	@FXML
 	private void pressedBackButton() { // man kehrt ins hauptmenu zurueck
@@ -28,49 +32,47 @@ public class TDDTrainerViewController {
 	@FXML
 	private void initialize() {
 		sourceCode.setStyle("-fx-border-color: red;");
-		testCode.setStyle("-fx-border-color: green");
+		testCode.setStyle("-fx-border-color: green;");
+		leftSaveButton.setStyle("-fx-border-color: red;");
+		rightSaveButton.setStyle("-fx-border-color: green;");
+		refactorButton.setStyle("-fx-border-color: red;");
 		sourceCode.setEditable(false);
 	}
 	
 	@FXML
 	private void testCodeSaveButtonPressed() { // der rechte savebutton 
-		if(!writeafailtest) {
-			System.out.println("your not in the mode writeafailtest");
-			return;
-		}
+		if(!writeafailtest) return;
+		
 		
 		TDDCompiler.getTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
 		TDDCompiler.getSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
 		
 		boolean checkCompile = TDDCompiler.checkCompile();
 		if(checkCompile) {
-			if(TDDCompiler.checkTestsAllSuccess()) { 
-				System.out.println("es sollte ein test failen");
-				return; 
-				}
+			if(TDDCompiler.checkTestsAllSuccess() || !TDDCompiler.checkTests1Failed())
+				new TDDAlert("In dem Modus WriteAFailTest darf nur 1 Test fehlschlagen!").showTestResults();
+				
 						
 			if(TDDCompiler.checkTests1Failed()) {
-				System.out.println("du bist jetzt im modus make the test pass");
-				makethetestpass = true;
-				writeafailtest = false;
+				new TDDAlert("MakeTheTestPass",false,true,false).switchedModeAlert();
 				sourceCode.setEditable(true);
 				testCode.setEditable(false);
+				leftSaveButton.setStyle("-fx-border-color: green;");
+				rightSaveButton.setStyle("-fx-border-color: red;");
 				sourceCode.setStyle("-fx-border-color: green;");
 				testCode.setStyle("-fx-border-color: red");
 			}
-			
-			else System.out.println("mehreretestsfail");
+		
 		}
 		
-		else System.out.println("da ist ein fehler im Test");
+		else new TDDAlert("Test").compileError(1);
+			
 	}
 	
 	@FXML
 	private void sourceCodeSaveButtonPressed() { // linker savebutton
-		if(!makethetestpass) {
-			System.out.println("Your not in the mode makethetestpass");
-			return;
-		}
+		if(!makethetestpass) return;
+		
 		
 		TDDCompiler.getTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
 		TDDCompiler.getSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
@@ -78,26 +80,22 @@ public class TDDTrainerViewController {
 		boolean checkCompile = TDDCompiler.checkCompile();
 		if(checkCompile) {
 			if(TDDCompiler.checkTestsAllSuccess()) {
-				refactor = true;
-				makethetestpass = false;
+				new TDDAlert("Refactor",false,false,true).switchedModeAlert();
+				leftSaveButton.setStyle("-fx-border-color: red;");
+				refactorButton.setStyle("-fx-border-color: green;");
 				sourceCode.setStyle("-fx-border-color: black;");
-				System.out.println("your now in mode refactor");
 			}
-			else {
-				System.out.println("du musst alle tests bestehen um in den modus refactor zuwechseln");
-				return;
-			}
+			else new TDDAlert("Du musst alle Tests bestehen um in den Modus: Refactor zugelangen!").showTestResults();
+			
 		}
-		else System.out.println("dein sourcecode ist falsch");	
+		else new TDDAlert("Source").compileError(2);
 		
 	}
 	
 	@FXML
 	private void refactorButtonPressed() { // refactor button linke seite
-		if(!refactor) {
-			System.out.println("you not in the mode refactor");
-			return;
-		}
+		if(!refactor) return;
+		
 		
 		TDDCompiler.getTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
 		TDDCompiler.getSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
@@ -105,42 +103,54 @@ public class TDDTrainerViewController {
 		boolean checkCompile = TDDCompiler.checkCompile();
 		if(checkCompile) {
 			if(TDDCompiler.checkTestsAllSuccess()) {
-				refactorOptions();
+				refactorAlert();				
 			}
-			else {
-				System.out.println("die tests schlagen fehl");
-				return;
-			}
+			else new TDDAlert("Du musst alle Tests bestehen um in den Modus: WriteAFailTest zu gelangen!").showTestResults();
+
+			
 		}
-		else System.out.println("dein sourcecode ist falsch");
+		else new TDDAlert("Source").compileError(2);
 		
 	}
 	
-	public void refactorOptions() { // optionen beim refactoring
+	
+	public static void setRefactorMode(boolean mode) {
+		refactor = mode;
+	}
+	
+	public static void setSourceCodeMode(boolean mode) {
+		makethetestpass = mode;
+	}
+	
+	public static void setTestMode(boolean mode) {
+		writeafailtest = mode;
+	}
+	
+	public void refactorAlert() { // von http://code.makery.ch/blog/javafx-dialogs-official/
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("TDDTrainer by ImmortalsGG");
+		alert.setTitle("TDDTrainer by Team ImmortalsGG");
 		alert.setHeaderText("Refactor Options");
 		alert.setContentText("Bitte waehle aus:");
 
-		ButtonType refactorButton = new ButtonType("ContinueRefactoring");
+		ButtonType continueRef = new ButtonType("ContinueRefactoring");
 		ButtonType newtestButton = new ButtonType("WriteNewTests");
 
-		alert.getButtonTypes().setAll(refactorButton, newtestButton);
+		alert.getButtonTypes().setAll(continueRef, newtestButton);
 
 		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == refactorButton) {
+		if (result.get() == continueRef) {
 			return;
 		}
 		else if (result.get() == newtestButton) {
-			refactor = false;
-			writeafailtest = true;
 			testCode.setEditable(true);
 			sourceCode.setEditable(false);
+			refactorButton.setStyle("-fx-border-color: red;");
+			rightSaveButton.setStyle("-fx-border-color: green;");
 			sourceCode.setStyle("-fx-border-color: red;");
 			testCode.setStyle("-fx-border-color: green;");
-			System.out.println("du bist jetzt in mode writeafailtest");
+			refactor = false;
+			writeafailtest = true;
 		}
-
 	}
 	
 }
