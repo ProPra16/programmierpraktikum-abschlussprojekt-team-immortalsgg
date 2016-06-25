@@ -7,16 +7,12 @@ IntelliJ
 
 File -> New -> Project from existing sources auswählen und dort den Ordner five-buttons, der geclont wurde importieren.
 
-Danach Rechtsklick auf den Ordner res/ und Mark directory as -> Resources Root wählen.
+Danach Rechtsklick auf den Ordner res/ und Mark directory as -> Resources Root waehlen.
 ____________________________________
 Noch etwas :
 <<<<<<< HEAD
-Falls ihr Windows10 benutzt könnt ihr euch den PreviewBuild holen build 14367 oder so , in dem Build ist eine Linux Shell mit drin -> Ubuntu on windows.
+Falls ihr Windows10 benutzt koennt ihr euch den PreviewBuild holen build 14367 oder so , in dem Build ist eine Linux Shell mit drin -> Ubuntu on windows.
 Ich hab die installiert , ausprobiert und tatsächlich kann man auch schon git darunter verwenden! 
-=======
-Falls ihr Windows10 benutzt kÃ¶nnt ihr euch den PreviewBuild holen build 14367 oder so , in dem Build ist eine Linux Shell mit drin -> Ubuntu on windows.
-Ich hab die installiert , ausprobiert und tatsÃ¤chlich kann man auch schon git darunter verwenden! 
->>>>>>> 9456546495456f14a862d225a67218d23144c171
 
 Travis:
 [![Build Status](https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-team-immortalsgg.svg?branch=master)](https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-team-immortalsgg.svg?branch=master)
