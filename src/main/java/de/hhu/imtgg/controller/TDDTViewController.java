@@ -30,7 +30,11 @@ public class TDDTViewController {
 	}
 	
 	private String getSourceCode(int i) { // kleines gerüst für die ausgewählte übung
-		return "public class " + uebungsnamen[i] +" {\n\n}";
+		return "public class " + uebungsnamen[i] +" {\n\n"
+				+ "	public static int defaultMethod() {\n"
+				+ "		return 0;\n"
+				+ "	}\n"
+				+ "}";
 	}
 	
 	private void menuItemActions(String testcode , String sourcecode,String uebungsnamen) {

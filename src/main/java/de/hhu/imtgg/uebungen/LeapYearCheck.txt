@@ -1,0 +1,13 @@
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class LeapYearCheckTest {
+	
+	@Test
+	public void testDefaultMehtod() {
+	
+	}
+	
+}
+end
+		
