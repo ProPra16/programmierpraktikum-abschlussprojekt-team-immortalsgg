@@ -29,7 +29,7 @@ public class TDDTViewController {
 		}
 	}
 	
-	private String getSourceCode(int i) { // kleines gerüst für die ausgewählte übung
+	private String getSourceCode(int i) { // kleines geruest fuer die ausgewaehlte uebung
 		return "public class " + uebungsnamen[i] +" {\n\n"
 				+ "	public static int defaultMethod() {\n"
 				+ "		return 0;\n"

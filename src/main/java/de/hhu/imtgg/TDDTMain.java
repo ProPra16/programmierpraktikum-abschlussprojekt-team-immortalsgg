@@ -28,7 +28,7 @@ public class TDDTMain extends Application {
 		launch(args);
 	}
 	
-	public static  void initTDDTViewLayout() {			// lädt layout für startbild aus FXML -> siehe TDDTView.fmxl
+	public static  void initTDDTViewLayout() {			// laedt layout für startbild aus FXML -> siehe TDDTView.fmxl
 		 try {
 			 FXMLLoader loader = new FXMLLoader();
 			 loader.setLocation(TDDTMain.class.getResource("layout/TDDTView.fxml"));
@@ -41,7 +41,7 @@ public class TDDTMain extends Application {
 		}
 	}
 	
-	public static void initTDDTrainerView(String testcode,String sourcecode) { //komisch gemacht doch die textarea lässt sich verändern beim start
+	public static void initTDDTrainerView(String testcode,String sourcecode) { //komisch gemacht doch die textarea laesst sich veraendern beim start
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(TDDTMain.class.getResource("layout/TDDTrainerView.fxml"));

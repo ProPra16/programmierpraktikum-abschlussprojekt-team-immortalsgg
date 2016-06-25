@@ -12,7 +12,7 @@ public class TDDUebungTests {
 	private static File ordner = new File("./src/main/java/de/hhu/imtgg/uebungen");
 	private static BufferedReader br;
 	
-	public static TDDTest[] getAllUebungen() { // macht die Uebungen für textarea lesbar
+	public static TDDTest[] getAllUebungen() { // macht die Uebungen fuer textarea lesbar
 		File[] uebungen = scan();
 		int uebungenanzahl = uebungen.length;
 		TDDTest[] uebungstest = new TDDTest[uebungenanzahl];

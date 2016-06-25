@@ -16,7 +16,7 @@ public class TDDTrainerViewController {
 	@FXML private TextArea testCode;
 	@FXML private TextArea sourceCode;
 	
-	private boolean writeafailtest = true; // booleans für den status der gerade ist
+	private boolean writeafailtest = true; // booleans fuer den status der gerade ist
 	private boolean makethetestpass = false;
 	private boolean refactor = false;
 	
@@ -120,7 +120,7 @@ public class TDDTrainerViewController {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("TDDTrainer by ImmortalsGG");
 		alert.setHeaderText("Refactor Options");
-		alert.setContentText("Bitte wähle aus:");
+		alert.setContentText("Bitte waehle aus:");
 
 		ButtonType refactorButton = new ButtonType("ContinueRefactoring");
 		ButtonType newtestButton = new ButtonType("WriteNewTests");

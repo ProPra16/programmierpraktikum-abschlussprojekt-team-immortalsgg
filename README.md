@@ -12,3 +12,6 @@ ____________________________________
 Noch etwas :
 Falls ihr Windows10 benutzt könnt ihr euch den PreviewBuild holen build 14367 oder so , in dem Build ist eine Linux Shell mit drin -> Ubuntu on windows.
 Ich hab die installiert , ausprobiert und tatsächlich kann man auch schon git darunter verwenden! 
+
+Travis:
+[![Build Status](https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-team-immortalsgg.svg?branch=master)](https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-team-immortalsgg.svg?branch=master)
