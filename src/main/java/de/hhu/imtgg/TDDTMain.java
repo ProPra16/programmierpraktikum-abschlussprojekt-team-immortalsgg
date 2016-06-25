@@ -28,7 +28,7 @@ public class TDDTMain extends Application {
 		launch(args);
 	}
 	
-	public static  void initTDDTViewLayout() {			// laedt layout für startbild aus FXML -> siehe TDDTView.fmxl
+	public static  void initTDDTViewLayout() {			// laedt layout fuer startbild aus FXML -> siehe TDDTView.fmxl
 		 try {
 			 FXMLLoader loader = new FXMLLoader();
 			 loader.setLocation(TDDTMain.class.getResource("layout/TDDTView.fxml"));

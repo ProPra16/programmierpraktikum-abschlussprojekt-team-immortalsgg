@@ -21,7 +21,7 @@ public class TDDTrainerViewController {
 	private boolean refactor = false;
 	
 	@FXML
-	private void pressedBackButton() { // man kehrt ins hauptmenu zurück
+	private void pressedBackButton() { // man kehrt ins hauptmenu zurueck
 		TDDTMain.initTDDTViewLayout();
 	}
 	
