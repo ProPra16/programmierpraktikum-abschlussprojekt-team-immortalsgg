@@ -3,6 +3,7 @@ package de.hhu.imtgg;
 import java.io.IOException;
 import java.net.URL;
 
+import de.hhu.imtgg.controller.TDDTDarkModeController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -58,13 +59,13 @@ public class TDDTMain extends Application {
 	}
 	
 	
-	public static void initTDDTrainerView(String testcode,String sourcecode) { //komisch gemacht doch die textarea laesst sich veraendern beim start
+	public static void initTDDTrainerViewNormalMode(String testcode,String sourcecode) { //komisch gemacht doch die textarea laesst sich veraendern beim start
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(TDDTMain.class.getResource("layout/TDDTrainerView.fxml"));
+			loader.setLocation(TDDTMain.class.getResource("layout/TDDTrainerViewNormalMode.fxml"));
 			tddtrainerview = (BorderPane) loader.load();
 			
-			SplitPane splitpanewithtextareas = (SplitPane) tddtrainerview.getChildren().get(2);
+			SplitPane splitpanewithtextareas = (SplitPane) tddtrainerview.getChildren().get(1);
 			AnchorPane anchorpanewithsourcecodearea = (AnchorPane) splitpanewithtextareas.getItems().get(0);
 			AnchorPane anchorpanewithtestcodearea = (AnchorPane) splitpanewithtextareas.getItems().get(1);
 			TextArea textareasourcecode = (TextArea) anchorpanewithsourcecodearea.getChildren().get(0); 
@@ -80,5 +81,6 @@ public class TDDTMain extends Application {
 		
 		}
 	}
+	
 }
 

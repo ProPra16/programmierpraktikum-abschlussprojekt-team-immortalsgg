@@ -41,8 +41,8 @@ public class TDDTViewController {
 				+ "}";
 	}
 	
-	private void menuItemActions(String testcode , String sourcecode,String uebungsnamen) {		
-		TDDTMain.initTDDTrainerView(testcode,sourcecode);
+	private void menuItemActions(String testcode , String sourcecode,String uebungsnamen) {				
+		TDDTMain.initTDDTrainerViewNormalMode(testcode,sourcecode);	
 		sourceCodeClassName =  uebungsnamen;
 	}
 	
@@ -54,17 +54,15 @@ public class TDDTViewController {
 		return sourceCodeClassName + "Test";
 	}
 	
-	@FXML
+	@FXML //darkmode button switch für hauptmenu
 	private void darkModeButtonPressed() {
 		if(TDDTDarkModeController.getDarkMode()) {
 			TDDTMain.initTDDTViewLayoutNormalMode();
 			TDDTDarkModeController.setDarkMode(false);
-			System.out.println("test");
 		}
 		else {
 			TDDTDarkModeController.setDarkMode(true);
 			TDDTMain.initTDDTViewLayoutDarkMode();
-			System.out.println("test2");
 
 		}
 	}
