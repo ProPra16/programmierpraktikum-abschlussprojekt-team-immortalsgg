@@ -5,6 +5,7 @@ import de.hhu.imtgg.TDDTMain;
 import de.hhu.imtgg.objects.TDDTest;
 import de.hhu.imtgg.objects.TDDUebungTests;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
@@ -12,6 +13,7 @@ import javafx.scene.control.RadioButton;
 public class TDDTViewController {
 	
 	@FXML private MenuButton uebungsButton;
+	@FXML private Label darkModeStatus;
 	private String[] uebungsnamen = TDDUebungTests.uebungsNamen();
 	private TDDTest[] uebungtests = TDDUebungTests.getAllUebungen();
 	private static String sourceCodeClassName = "";
@@ -39,7 +41,7 @@ public class TDDTViewController {
 				+ "}";
 	}
 	
-	private void menuItemActions(String testcode , String sourcecode,String uebungsnamen) {
+	private void menuItemActions(String testcode , String sourcecode,String uebungsnamen) {		
 		TDDTMain.initTDDTrainerView(testcode,sourcecode);
 		sourceCodeClassName =  uebungsnamen;
 	}
@@ -50,5 +52,20 @@ public class TDDTViewController {
 	
 	public static String getTestCodeClassName() {
 		return sourceCodeClassName + "Test";
+	}
+	
+	@FXML
+	private void darkModeButtonPressed() {
+		if(TDDTDarkModeController.getDarkMode()) {
+			TDDTMain.initTDDTViewLayoutNormalMode();
+			TDDTDarkModeController.setDarkMode(false);
+			System.out.println("test");
+		}
+		else {
+			TDDTDarkModeController.setDarkMode(true);
+			TDDTMain.initTDDTViewLayoutDarkMode();
+			System.out.println("test2");
+
+		}
 	}
 }

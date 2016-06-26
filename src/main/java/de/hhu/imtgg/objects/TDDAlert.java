@@ -49,7 +49,7 @@ public class TDDAlert {
 
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == yesButton) {
-			TDDTMain.initTDDTViewLayout();
+			TDDTMain.initTDDTViewLayoutDarkMode();
 		}
 		else if (result.get() == noButton) {
 			return;

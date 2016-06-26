@@ -24,17 +24,30 @@ public class TDDTMain extends Application {
 		TDDTMain.primarystage = stage;
 		TDDTMain.primarystage.setTitle("TDD Trainer by Team ImmortalsGG");
 		
-		initTDDTViewLayout();
+		initTDDTViewLayoutNormalMode();
 	}
 
 	public static void main(String[] args) {
 		launch(args);
 	}
 	
-	public static void initTDDTViewLayout() {			// laedt layout fuer startbild aus FXML -> siehe TDDTView.fmxl
+	public static void initTDDTViewLayoutDarkMode() {			// laedt layout fuer startbild aus FXML -> siehe TDDTView.fmxl
 		 try {
 			 FXMLLoader loader = new FXMLLoader();
-			 loader.setLocation(TDDTMain.class.getResource("layout/TDDTView.fxml"));
+			 loader.setLocation(TDDTMain.class.getResource("layout/TDDTViewDarkMode.fxml"));
+			 tddtviewlayout = (BorderPane) loader.load(); 
+			 scene = new Scene(tddtviewlayout);			 
+			 primarystage.setScene(scene);
+			 primarystage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void initTDDTViewLayoutNormalMode() {			// laedt layout fuer startbild aus FXML -> siehe TDDTView.fmxl
+		 try {
+			 FXMLLoader loader = new FXMLLoader();
+			 loader.setLocation(TDDTMain.class.getResource("layout/TDDTViewNormalMode.fxml"));
 			 tddtviewlayout = (BorderPane) loader.load(); 
 			 scene = new Scene(tddtviewlayout);			 
 			 primarystage.setScene(scene);
