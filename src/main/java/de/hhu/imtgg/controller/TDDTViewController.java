@@ -7,6 +7,7 @@ import de.hhu.imtgg.objects.TDDUebungTests;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioButton;
 
 public class TDDTViewController {
 	
@@ -14,6 +15,7 @@ public class TDDTViewController {
 	private String[] uebungsnamen = TDDUebungTests.uebungsNamen();
 	private TDDTest[] uebungtests = TDDUebungTests.getAllUebungen();
 	private static String sourceCodeClassName = "";
+	
 	
 	@FXML
 	private void initialize() { // haut alle uebungen aus dem ordner Uebungen in den Menubutton
@@ -26,7 +28,7 @@ public class TDDTViewController {
 			int currentuebung = i;
 			menuitem.setOnAction(e -> menuItemActions(testcode,getSourceCode(currentuebung),uebungsclassname));
 			uebungsButton.getItems().add(menuitem);
-		}
+		}	
 	}
 	
 	private String getSourceCode(int i) { // kleines geruest fuer die ausgewaehlte uebung

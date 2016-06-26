@@ -2,19 +2,39 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hhu.imtgg.controller.TDDTViewController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="258.0" layoutY="34.0" scaleX="5.0" scaleY="5.0" text="TDD Trainer" />
-            <Label layoutX="203.0" layoutY="70.0" scaleX="0.8" scaleY="0.8" text="(test driven development trainer)" />
-            <Label layoutX="232.0" layoutY="200.0" scaleX="0.7" scaleY="0.7" text="by Team ImmortalsGG" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <Label layoutX="181.0" layoutY="120.0" scaleX="1.5" scaleY="1.5" text="Bitte waehle die gewünschte Uebung aus" />
+            <Label layoutX="151.0" layoutY="39.0" text="TDD Trainer" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="Serif Italic" size="60.0" />
+               </font></Label>
+            <Label layoutX="226.0" layoutY="62.0" text="(test driven development trainer)" textOverrun="CLIP" AnchorPane.leftAnchor="226.0" AnchorPane.topAnchor="62.0">
+               <font>
+                  <Font name="System Italic" size="9.0" />
+               </font></Label>
+            <Label layoutX="232.0" layoutY="200.0" text="by Team ImmortalsGG" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font name="Serif Italic" size="8.0" />
+               </font></Label>
+            <Label layoutX="181.0" layoutY="120.0" text="Bitte wähle die gewünschte Uebung aus" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="115.0">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
             <MenuButton fx:id="uebungsButton" layoutX="246.0" layoutY="159.0" mnemonicParsing="false" scaleX="1.3" scaleY="1.3" text="Uebungen" />
+            <Label layoutX="65.0" layoutY="218.0" text="Einstellungen" AnchorPane.bottomAnchor="165.0" AnchorPane.rightAnchor="461.0" />
+            <Label layoutX="91.0" layoutY="239.0" text="Babysteps" AnchorPane.bottomAnchor="145.0" AnchorPane.rightAnchor="461.0" />
+            <Label layoutX="104.0" layoutY="258.0" text="Tracking" AnchorPane.bottomAnchor="125.0" AnchorPane.rightAnchor="461.0" />
+            <Label layoutX="41.0" layoutY="277.0" text="ATDD(Akzeptanstests)" AnchorPane.bottomAnchor="105.0" AnchorPane.rightAnchor="461.0" />
+            <RadioButton layoutX="151.0" layoutY="238.0" mnemonicParsing="false" AnchorPane.bottomAnchor="145.0" AnchorPane.rightAnchor="428.0" />
+            <RadioButton layoutX="189.0" layoutY="268.0" mnemonicParsing="false" AnchorPane.bottomAnchor="125.0" AnchorPane.rightAnchor="428.0" />
+            <RadioButton layoutX="189.0" layoutY="297.0" mnemonicParsing="false" AnchorPane.bottomAnchor="105.0" AnchorPane.rightAnchor="428.0" />
          </children>
       </AnchorPane>
    </center>
