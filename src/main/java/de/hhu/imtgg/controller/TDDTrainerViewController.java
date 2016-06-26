@@ -28,10 +28,10 @@ public class TDDTrainerViewController {
 	
 	@FXML
 	private void pressedBackButton() { // man kehrt ins hauptmenu zurueck
-		TDDTMain.initTDDTViewLayout();
 		writeafailtest = true;
 		makethetestpass = false;
 		refactor = false;
+		new TDDAlert().areUSureMessage();
 	}
 	
 	@FXML
@@ -153,7 +153,7 @@ public class TDDTrainerViewController {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("TDDTrainer by Team ImmortalsGG");
 		alert.setHeaderText("Refactor Options");
-		alert.setContentText("Bitte waehle aus:");
+		alert.setContentText("Sind sie sicher, dass sie genug refactored haben?\nBitte waehle aus:");
 
 		ButtonType continueRef = new ButtonType("ContinueRefactoring");
 		ButtonType newtestButton = new ButtonType("WriteNewTests");

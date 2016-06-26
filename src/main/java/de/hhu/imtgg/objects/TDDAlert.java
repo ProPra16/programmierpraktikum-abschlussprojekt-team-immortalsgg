@@ -1,5 +1,8 @@
 package de.hhu.imtgg.objects;
 
+import java.util.Optional;
+
+import de.hhu.imtgg.TDDTMain;
 import de.hhu.imtgg.compiler.TDDCompiler;
 import de.hhu.imtgg.controller.TDDTrainerViewController;
 import javafx.scene.control.Alert;
@@ -27,6 +30,30 @@ public class TDDAlert {
 	
 	public TDDAlert(String message) {
 		this.message = message;
+	}
+	
+	public TDDAlert() {
+		
+	}
+	
+	public void areUSureMessage() {
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("TDDTrainer by Team ImmortalsGG");
+		alert.setHeaderText("Zurueck ins Hauptmenue?");
+		alert.setContentText("Sind sie sicher, dass sie ins Hauptmenue wechseln wollen?\nIhr ganzer Fortschritt geht dabei verloren!");
+
+		ButtonType yesButton = new ButtonType("Ja");
+		ButtonType noButton = new ButtonType("Nein, abbrechen!");
+
+		alert.getButtonTypes().setAll(yesButton, noButton);
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == yesButton) {
+			TDDTMain.initTDDTViewLayout();
+		}
+		else if (result.get() == noButton) {
+			return;
+		}
 	}
 	
 	public void switchedModeAlert() { // alert das modus geswitcht und switcht booleans in tddvcontroller
