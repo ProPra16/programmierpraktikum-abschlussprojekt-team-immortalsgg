@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class TDDTMain extends Application {
 
 	private static Stage primarystage;
-	private static AnchorPane tddtviewlayout;
+	private static BorderPane tddtviewlayout;
 	private static BorderPane tddtrainerview;
 	
 	@Override
@@ -32,7 +32,7 @@ public class TDDTMain extends Application {
 		 try {
 			 FXMLLoader loader = new FXMLLoader();
 			 loader.setLocation(TDDTMain.class.getResource("layout/TDDTView.fxml"));
-			 tddtviewlayout = (AnchorPane) loader.load(); 
+			 tddtviewlayout = (BorderPane) loader.load(); 
 			 Scene scene = new Scene(tddtviewlayout);
 			 primarystage.setScene(scene);
 			 primarystage.show();

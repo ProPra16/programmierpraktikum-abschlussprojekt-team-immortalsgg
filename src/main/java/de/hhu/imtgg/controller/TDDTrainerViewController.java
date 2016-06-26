@@ -11,6 +11,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
+import javafx.scene.text.Text;
 
 public class TDDTrainerViewController {
 	
@@ -19,6 +20,7 @@ public class TDDTrainerViewController {
 	@FXML private Button leftSaveButton;
 	@FXML private Button rightSaveButton;
 	@FXML private Button refactorButton;
+	@FXML private Text bottomStatusText;
 	
 	private static boolean writeafailtest = true; // booleans fuer den status der gerade ist
 	private static boolean makethetestpass = false;
@@ -27,6 +29,22 @@ public class TDDTrainerViewController {
 	@FXML
 	private void pressedBackButton() { // man kehrt ins hauptmenu zurueck
 		TDDTMain.initTDDTViewLayout();
+		writeafailtest = true;
+		makethetestpass = false;
+		refactor = false;
+	}
+	
+	@FXML
+	private void changeBackToTestMode() {
+		if(writeafailtest) return;
+		testCode.setEditable(true);
+		sourceCode.setEditable(false);
+		refactorButton.setStyle("-fx-border-color: red;");
+		rightSaveButton.setStyle("-fx-border-color: green;");
+		sourceCode.setStyle("-fx-border-color: red;");
+		testCode.setStyle("-fx-border-color: green;");
+		new TDDAlert("WriteAFailTest",true,false,false).switchedModeAlert();
+		bottomStatusText.setText("Du befindest dich im Modus WriteAFailTest");
 	}
 	
 	@FXML
@@ -37,6 +55,7 @@ public class TDDTrainerViewController {
 		rightSaveButton.setStyle("-fx-border-color: green;");
 		refactorButton.setStyle("-fx-border-color: red;");
 		sourceCode.setEditable(false);
+		bottomStatusText.setText("Du befindest dich im Modus WriteAFailTest");
 	}
 	
 	@FXML
@@ -61,6 +80,8 @@ public class TDDTrainerViewController {
 				rightSaveButton.setStyle("-fx-border-color: red;");
 				sourceCode.setStyle("-fx-border-color: green;");
 				testCode.setStyle("-fx-border-color: red");
+				bottomStatusText.setText("Du befindest dich im Modus MakeTheTestPass");
+
 			}
 		
 		}
@@ -84,6 +105,8 @@ public class TDDTrainerViewController {
 				leftSaveButton.setStyle("-fx-border-color: red;");
 				refactorButton.setStyle("-fx-border-color: green;");
 				sourceCode.setStyle("-fx-border-color: black;");
+				bottomStatusText.setText("Du befindest dich im Modus Refactor");
+
 			}
 			else new TDDAlert("Du musst alle Tests bestehen um in den Modus: Refactor zugelangen!").showTestResults();
 			
@@ -148,8 +171,8 @@ public class TDDTrainerViewController {
 			rightSaveButton.setStyle("-fx-border-color: green;");
 			sourceCode.setStyle("-fx-border-color: red;");
 			testCode.setStyle("-fx-border-color: green;");
-			refactor = false;
-			writeafailtest = true;
+			new TDDAlert("WriteAFailTest",true,false,false).switchedModeAlert();
+			bottomStatusText.setText("Du befindest dich im Modus WriteAFailTest");
 		}
 	}
 	

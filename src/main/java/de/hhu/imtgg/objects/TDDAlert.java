@@ -42,7 +42,7 @@ public class TDDAlert {
 		alert.showAndWait();
 	}
 	
-	public void showTestResults() {
+	public void showTestResults() {	// von http://code.makery.ch/blog/javafx-dialogs-official/
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("TDD Trainer by Team ImmortalsGG");
 		alert.setHeaderText(null);
