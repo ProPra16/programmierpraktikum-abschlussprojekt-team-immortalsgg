@@ -22,6 +22,8 @@ public class TDDTrainerViewController {
 	@FXML private Button refactorButton;
 	@FXML private Text bottomStatusText;
 	
+	private String sourceCodeSave;
+	
 	private static boolean writeafailtest = true; // booleans fuer den status der gerade ist
 	private static boolean makethetestpass = false;
 	private static boolean refactor = false;
@@ -45,6 +47,7 @@ public class TDDTrainerViewController {
 		testCode.setStyle("-fx-border-color: green;");
 		new TDDAlert("WriteAFailTest",true,false,false).switchedModeAlert();
 		bottomStatusText.setText("Du befindest dich im Modus WriteAFailTest");
+		sourceCode.setText(sourceCodeSave);
 	}
 	
 	@FXML
@@ -81,7 +84,7 @@ public class TDDTrainerViewController {
 				sourceCode.setStyle("-fx-border-color: green;");
 				testCode.setStyle("-fx-border-color: red");
 				bottomStatusText.setText("Du befindest dich im Modus MakeTheTestPass");
-
+				sourceCodeSave = sourceCode.getText();
 			}
 		
 		}
