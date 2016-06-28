@@ -5,6 +5,7 @@ import java.util.Optional;
 import de.hhu.imtgg.TDDTMain;
 import de.hhu.imtgg.compiler.TDDCompiler;
 import de.hhu.imtgg.controller.TDDTDarkModeController;
+import de.hhu.imtgg.controller.TDDTrainerViewBabyStepsController;
 import de.hhu.imtgg.controller.TDDTrainerViewController;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -67,6 +68,11 @@ public class TDDAlert {
 		TDDTrainerViewController.setTestMode(test);
 		TDDTrainerViewController.setSourceCodeMode(source);
 		TDDTrainerViewController.setRefactorMode(refactor);
+		
+		TDDTrainerViewBabyStepsController.setTestMode(test); // babymode
+		TDDTrainerViewBabyStepsController.setSourceCodeMode(source);
+		TDDTrainerViewBabyStepsController.setRefactorMode(refactor);
+
 	
 		alert.showAndWait();
 	}

@@ -36,17 +36,17 @@
                <font>
                   <Font name="Serif Italic" size="15.0" />
                </font></Label>
-            <RadioButton layoutX="234.0" layoutY="224.0" mnemonicParsing="false" style="-fx-text-fill: lightgrey;" text="Babysteps" AnchorPane.bottomAnchor="159.0" AnchorPane.leftAnchor="234.0">
+            <RadioButton layoutX="234.0" layoutY="224.0" mnemonicParsing="false" onAction="#babyStepsActivated" style="-fx-text-fill: lightgrey;" text="Babysteps" AnchorPane.bottomAnchor="159.0" AnchorPane.leftAnchor="234.0">
                <font>
                   <Font name="Serif Italic" size="13.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="238.0" layoutY="251.0" mnemonicParsing="false" style="-fx-text-fill: lightgrey;" text="Tracking" AnchorPane.bottomAnchor="139.0" AnchorPane.leftAnchor="234.0">
+            <RadioButton layoutX="238.0" layoutY="251.0" mnemonicParsing="false" onAction="#trackingActivated" style="-fx-text-fill: lightgrey;" text="Tracking" AnchorPane.bottomAnchor="139.0" AnchorPane.leftAnchor="234.0">
                <font>
                   <Font name="Serif Italic" size="13.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="223.0" layoutY="277.0" mnemonicParsing="false" style="-fx-text-fill: lightgrey;" text="ATDD(Akzeptanztests)" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="234.0">
+            <RadioButton layoutX="223.0" layoutY="277.0" mnemonicParsing="false" onAction="#atddActivated" style="-fx-text-fill: lightgrey;" text="ATDD(Akzeptanztests)" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="234.0">
                <font>
                   <Font name="Serif Italic" size="13.0" />
                </font>
