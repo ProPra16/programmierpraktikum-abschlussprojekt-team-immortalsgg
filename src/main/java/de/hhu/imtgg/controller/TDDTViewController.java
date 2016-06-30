@@ -65,9 +65,6 @@ public class TDDTViewController {
 	}
 	private String getSourceCode(int i) { // kleines geruest fuer die ausgewaehlte uebung
 		return "public class " + uebungsnamen[i] +" {\n\n"
-				+ "	public static int defaultMethod() {\n"
-				+ "		return 0;\n"
-				+ "	}\n"
 				+ "}";
 	}
 	
@@ -89,7 +86,7 @@ public class TDDTViewController {
 		return sourceCodeClassName + "Test";
 	}
 	
-	@FXML //darkmode button switch für hauptmenu
+	@FXML //darkmode button switch fï¿½r hauptmenu
 	private void darkModeButtonPressed() {
 		if(TDDTDarkModeController.getDarkMode()) {
 			TDDTMain.initTDDTViewLayoutNormalMode();

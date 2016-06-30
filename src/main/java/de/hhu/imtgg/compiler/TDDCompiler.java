@@ -14,10 +14,10 @@ public class TDDCompiler {
 	
 	private static String fails = "";
 	
-	public static void getTestClass(String testName,String testCode) {
+	public static void setTestClass(String testName,String testCode) {
 		testClass = new CompilationUnit(testName,testCode,true);
 	}
-	public static void getSourceClass(String sourceName,String sourceCode) {
+	public static void setSourceClass(String sourceName,String sourceCode) {
 		sourceClass = new CompilationUnit(sourceName,sourceCode,false);
 	}
 	
@@ -59,8 +59,6 @@ public class TDDCompiler {
 		compiler.getTestResult().getTestFailures().stream().forEach(e -> { fails = fails + e.getMessage() +"\n";});
 		return fails;
 	}
-	
-	
 	
 	public static void resetFails() {
 		fails = "";

@@ -104,8 +104,8 @@ public class TDDTrainerViewController {
 		if(!writeafailtest) return;
 		
 		
-		TDDCompiler.getTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
-		TDDCompiler.getSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
+		TDDCompiler.setTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
+		TDDCompiler.setSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
 		
 		boolean checkCompile = TDDCompiler.checkCompile();
 		if(checkCompile) {
@@ -113,24 +113,14 @@ public class TDDTrainerViewController {
 				new TDDAlert("In dem Modus WriteAFailTest darf nur 1 Test fehlschlagen!").showTestResults();
 				
 						
-			if(TDDCompiler.checkTests1Failed()) {
-				sourceCode.setEditable(true);
-				testCode.setEditable(false);
-				leftSaveButton.setStyle("-fx-border-color: green;");
-				rightSaveButton.setStyle("-fx-border-color: red;");
-				sourceCode.setStyle("-fx-border-color: green;");
-				testCode.setStyle("-fx-border-color: red");
-				bottomStatusText.setText("Du befindest dich im Modus MakeTheTestPass");
-				sourceCodeSave = sourceCode.getText();
-				
+			if(TDDCompiler.checkTests1Failed()) {				
 				testCodeTimerStop = false;
 				sourceCodeTimerStop = true;
 				sourceCodeCounter = TDDTViewController.getBbyMinute();
 				if(TDDTViewController.getBabyStepsMode())
 					startSourceCodeTimer();
 			
-				new TDDAlert("MakeTheTestPass",false,true,false).switchedModeAlert();
-				
+				switchToMakeTheTestPass();
 				try { // damit man sieht auf wie viel sek man auf der anderen seite war , 1sek warten damit der timer durchläuft und nichts dazwischen kommt
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
@@ -139,13 +129,29 @@ public class TDDTrainerViewController {
 				}
 				testCodeTimer.setOpacity(0.25);
 				testCodeTimer.setStyle("-fx-fill: black;");
-
 			}
 		
 		}
 		
-		else new TDDAlert("Test").compileError(1);
-			
+		else {
+			TDDAlert alert = new TDDAlert();
+			boolean clickYes = alert.compileErrorModeSwitchAlert(1);
+			if (clickYes) {
+				switchToMakeTheTestPass();
+			}
+		}		
+	}
+
+	private void switchToMakeTheTestPass() {
+		new TDDAlert("MakeTheTestPass",false,true,false).switchedModeAlert();
+		sourceCode.setEditable(true);
+		testCode.setEditable(false);
+		leftSaveButton.setStyle("-fx-border-color: green;");
+		rightSaveButton.setStyle("-fx-border-color: red;");
+		sourceCode.setStyle("-fx-border-color: green;");
+		testCode.setStyle("-fx-border-color: red");
+		bottomStatusText.setText("Du befindest dich im Modus MakeTheTestPass");
+		sourceCodeSave = sourceCode.getText();
 	}
 	
 	@FXML
@@ -153,8 +159,8 @@ public class TDDTrainerViewController {
 		if(!makethetestpass) return;
 		
 		
-		TDDCompiler.getTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
-		TDDCompiler.getSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
+		TDDCompiler.setTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
+		TDDCompiler.setSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
 		
 		boolean checkCompile = TDDCompiler.checkCompile();
 		if(checkCompile) {
@@ -190,8 +196,8 @@ public class TDDTrainerViewController {
 		if(!refactor) return;
 		
 		
-		TDDCompiler.getTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
-		TDDCompiler.getSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
+		TDDCompiler.setTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
+		TDDCompiler.setSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
 		
 		boolean checkCompile = TDDCompiler.checkCompile();
 		if(checkCompile) {
