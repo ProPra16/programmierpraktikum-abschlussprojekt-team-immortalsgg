@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import de.hhu.imtgg.controller.TDDTDarkModeController;
-import de.hhu.imtgg.controller.TDDTrainerViewBabyStepsController;
+import de.hhu.imtgg.controller.TDDTrainerViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -27,7 +27,7 @@ public class TDDTMain extends Application {
 		TDDTMain.primarystage.setTitle("TDD Trainer by Team ImmortalsGG");
 		
 		initTDDTViewLayoutNormalMode();
-		primarystage.setOnCloseRequest(e -> TDDTrainerViewBabyStepsController.interruptTimer()); //babymode
+		primarystage.setOnCloseRequest(e -> TDDTrainerViewController.interruptTimer()); //babymode
 	}
 
 	public static void main(String[] args) {
@@ -65,29 +65,6 @@ public class TDDTMain extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(TDDTMain.class.getResource("layout/TDDTrainerViewNormalMode.fxml"));
-			tddtrainerview = (BorderPane) loader.load();
-			
-			SplitPane splitpanewithtextareas = (SplitPane) tddtrainerview.getChildren().get(1);
-			AnchorPane anchorpanewithsourcecodearea = (AnchorPane) splitpanewithtextareas.getItems().get(0);
-			AnchorPane anchorpanewithtestcodearea = (AnchorPane) splitpanewithtextareas.getItems().get(1);
-			TextArea textareasourcecode = (TextArea) anchorpanewithsourcecodearea.getChildren().get(0); 
-			TextArea textareatestcode = (TextArea) anchorpanewithtestcodearea.getChildren().get(0); 
-			textareatestcode.setText(testcode);
-			textareasourcecode.setText(sourcecode);
-			scene = new Scene(tddtrainerview);
-						
-			primarystage.setScene(scene);
-			primarystage.show();
-		} catch(IOException e) {
-			e.printStackTrace();
-		
-		}
-	}
-	
-	public static void initTDDTrainerViewBabyStepsMode(String testcode,String sourcecode) { //komisch gemacht doch die textarea laesst sich veraendern beim start
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(TDDTMain.class.getResource("layout/TDDTrainerViewBabyStepsMode.fxml"));
 			tddtrainerview = (BorderPane) loader.load();
 			
 			SplitPane splitpanewithtextareas = (SplitPane) tddtrainerview.getChildren().get(1);

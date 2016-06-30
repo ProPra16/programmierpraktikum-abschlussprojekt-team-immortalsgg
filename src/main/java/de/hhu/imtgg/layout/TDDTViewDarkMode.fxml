@@ -4,63 +4,65 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hhu.imtgg.controller.TDDTViewController">
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hhu.imtgg.controller.TDDTViewController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="151.0" layoutY="39.0" style="-fx-text-fill: lightgrey;" text="TDD Trainer" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="0.0">
+            <Label layoutX="151.0" layoutY="39.0" text="TDD Trainer" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font name="Serif Italic" size="60.0" />
                </font></Label>
-            <Label layoutX="226.0" layoutY="62.0" style="-fx-text-fill: lightgrey;" text="(test driven development trainer)" textOverrun="CLIP" AnchorPane.leftAnchor="226.0" AnchorPane.topAnchor="62.0">
+            <Label layoutX="226.0" layoutY="62.0" text="(test driven development trainer)" textOverrun="CLIP" AnchorPane.leftAnchor="226.0" AnchorPane.topAnchor="62.0">
                <font>
                   <Font name="System Italic" size="9.0" />
                </font></Label>
-            <Label layoutX="232.0" layoutY="200.0" style="-fx-text-fill: whitesmoke;" text="by Team ImmortalsGG" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label layoutX="232.0" layoutY="200.0" text="by Team ImmortalsGG" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font name="Serif Italic" size="8.0" />
                </font></Label>
-            <Label layoutX="181.0" layoutY="120.0" style="-fx-text-fill: lightgrey;" text="Bitte wähle die gewünschte Übung aus" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="115.0">
+            <Label layoutX="181.0" layoutY="120.0" text="Bitte wähle die gewünschte Übung aus" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="115.0">
                <font>
                   <Font name="Serif Italic" size="20.0" />
                </font></Label>
-            <MenuButton fx:id="uebungsButton" layoutX="239.0" layoutY="149.0" mnemonicParsing="false" popupSide="RIGHT" style="-fx-background-color: null; -fx-border-color: lightgrey;" text="Übungen" textFill="#f5f5f5" textOverrun="CLIP">
+            <MenuButton fx:id="uebungsButton" layoutX="239.0" layoutY="149.0" mnemonicParsing="false" popupSide="RIGHT" style="-fx-background-color: null; -fx-border-color: dimgray;" text="Übungen" textOverrun="CLIP">
                <font>
                   <Font name="Serif Italic" size="14.0" />
                </font></MenuButton>
-            <Label layoutX="222.0" layoutY="200.0" style="-fx-text-fill: lightgrey;" text="Weitere Einstellungen:" AnchorPane.bottomAnchor="183.0" AnchorPane.rightAnchor="260.0">
+            <Label layoutX="222.0" layoutY="200.0" text="Weitere Einstellungen:" AnchorPane.bottomAnchor="183.0" AnchorPane.rightAnchor="260.0">
                <font>
                   <Font name="Serif Italic" size="15.0" />
                </font></Label>
-            <RadioButton layoutX="234.0" layoutY="224.0" mnemonicParsing="false" onAction="#babyStepsActivated" style="-fx-text-fill: lightgrey;" text="Babysteps" AnchorPane.bottomAnchor="159.0" AnchorPane.leftAnchor="234.0">
+            <RadioButton layoutX="234.0" layoutY="224.0" mnemonicParsing="false" onAction="#babyStepsActivated" text="Babysteps" AnchorPane.bottomAnchor="159.0" AnchorPane.leftAnchor="234.0">
                <font>
                   <Font name="Serif Italic" size="13.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="238.0" layoutY="251.0" mnemonicParsing="false" onAction="#trackingActivated" style="-fx-text-fill: lightgrey;" text="Tracking" AnchorPane.bottomAnchor="139.0" AnchorPane.leftAnchor="234.0">
+            <RadioButton layoutX="238.0" layoutY="251.0" mnemonicParsing="false" onAction="#trackingActivated" text="Tracking" AnchorPane.bottomAnchor="139.0" AnchorPane.leftAnchor="234.0">
                <font>
                   <Font name="Serif Italic" size="13.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="223.0" layoutY="277.0" mnemonicParsing="false" onAction="#atddActivated" style="-fx-text-fill: lightgrey;" text="ATDD(Akzeptanztests)" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="234.0">
+            <RadioButton layoutX="223.0" layoutY="277.0" mnemonicParsing="false" onAction="#atddActivated" text="ATDD(Akzeptanztests)" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="234.0">
                <font>
                   <Font name="Serif Italic" size="13.0" />
                </font>
             </RadioButton>
-            <Button layoutX="25.0" layoutY="345.0" mnemonicParsing="false" onAction="#darkModeButtonPressed" style="-fx-background-color: null; -fx-border-color: lightgrey; -fx-text-fill: lightgrey;" text="Dark Mode" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+            <Label layoutX="97.0" layoutY="359.0" text="On" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="85.0">
+               <font>
+                  <Font name="Serif Italic" size="11.0" />
+               </font>
+            </Label>
+            <Button layoutX="14.0" layoutY="353.0" mnemonicParsing="false" onAction="#darkModeButtonPressed" style="-fx-background-color: null; -fx-border-color: dimgrey;" text="Dark Mode" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
                <font>
                   <Font name="Serif Italic" size="11.0" />
                </font>
             </Button>
-            <Label layoutX="94.0" layoutY="370.0" style="-fx-text-fill: lightgrey;" text="On" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="85.0">
-               <font>
-                  <Font name="Serif Italic" size="12.0" />
-               </font>
-            </Label>
+            <Spinner fx:id="bbyStepsMinute" layoutX="353.0" layoutY="196.0" prefHeight="11.0" prefWidth="52.0" scaleX="0.7" scaleY="0.7" AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="314.0" />
          </children>
       </AnchorPane>
    </center>

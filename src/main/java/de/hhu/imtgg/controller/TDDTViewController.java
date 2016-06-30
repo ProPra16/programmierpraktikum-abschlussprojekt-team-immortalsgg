@@ -23,7 +23,7 @@ public class TDDTViewController {
 	private static int bbyMinutes = 1;
 	private static String testCodevorlage;
 	
-	private boolean babySteps = false;
+	private static boolean babySteps = false;
 	private boolean tracking = false;
 	private boolean atdd = false;
 	
@@ -31,7 +31,7 @@ public class TDDTViewController {
 	@FXML
 	private void initialize() { // haut alle uebungen aus dem ordner Uebungen in den Menubutton
 		int uebungsanzahl = uebungsnamen.length;
-
+		babySteps = false; // reset 
 		setSpinnerConfig();
 		
 		for(int i = 0; i < uebungsanzahl; i++) {
@@ -56,6 +56,10 @@ public class TDDTViewController {
 		bbyMinutes = Integer.parseInt(minutes);
 	}
 	
+	public static void setBbyMinuteDefault() { //  falls man zurück ins hauptmenu geht , der wert zurückgesetzt wird
+		bbyMinutes = 1;
+	}
+	
 	public static int getBbyMinute() {
 		return bbyMinutes*60;
 	}
@@ -67,10 +71,13 @@ public class TDDTViewController {
 				+ "}";
 	}
 	
-	private void menuItemActions(String testcode , String sourcecode,String uebungsnamen) {	// steuerung welche modi (lädt fxml dateien modi)
+	public static boolean getBabyStepsMode() {
+		return babySteps;
+	}
+	
+	private void menuItemActions(String testcode , String sourcecode,String uebungsnamen) {	
 		testCodevorlage = testcode;
-		if(babySteps) TDDTMain.initTDDTrainerViewBabyStepsMode(testcode, sourcecode);
-		else TDDTMain.initTDDTrainerViewNormalMode(testcode,sourcecode);	
+		TDDTMain.initTDDTrainerViewNormalMode(testcode,sourcecode);	
 		sourceCodeClassName =  uebungsnamen;
 	}
 	
