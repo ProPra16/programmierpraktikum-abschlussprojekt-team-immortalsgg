@@ -5,6 +5,8 @@ import java.util.Optional;
 import de.hhu.imtgg.TDDTMain;
 import de.hhu.imtgg.compiler.TDDCompiler;
 import de.hhu.imtgg.controller.TDDTDarkModeController;
+import de.hhu.imtgg.controller.TDDTViewController;
+import de.hhu.imtgg.controller.TDDTrainerViewController;
 import de.hhu.imtgg.controller.TDDTrainerViewController;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -52,6 +54,8 @@ public class TDDAlert {
 		if (result.get() == yesButton) {
 			if(TDDTDarkModeController.getDarkMode()) TDDTMain.initTDDTViewLayoutDarkMode();
 			else TDDTMain.initTDDTViewLayoutNormalMode();
+			
+			TDDTViewController.setBbyMinuteDefault();
 		}
 		else if (result.get() == noButton) {
 			return;
@@ -69,6 +73,44 @@ public class TDDAlert {
 		TDDTrainerViewController.setRefactorMode(refactor);
 	
 		alert.showAndWait();
+	}
+	
+	public boolean compileErrorModeSwitchAlert(int klasse) { // alert das der Test nicht kompiliert und ob man trotzdem switchen will
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("TDD Trainer by Team ImmortalsGG");
+		alert.setHeaderText(null);
+		alert.setContentText("Deine Tests kompillieren nicht!\nMöchtest du den Modus trotzdem wechseln?");
+		
+		ButtonType yesButton = new ButtonType("Ja");
+		ButtonType noButton = new ButtonType("Nein, abbrechen!");
+
+		alert.getButtonTypes().setAll(yesButton, noButton);
+		
+		String exceptionText = TDDCompiler.getCompileErrors(klasse);
+
+		Label label = new Label("Fehlermeldung:");
+
+		TextArea textArea = new TextArea(exceptionText);
+		textArea.setEditable(false);
+		textArea.setWrapText(true);
+
+		textArea.setMaxWidth(Double.MAX_VALUE);
+		textArea.setMaxHeight(Double.MAX_VALUE);
+		GridPane.setVgrow(textArea, Priority.ALWAYS);
+		GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+		GridPane expContent = new GridPane();
+		expContent.setMaxWidth(Double.MAX_VALUE);
+		expContent.add(label, 0, 0);
+		expContent.add(textArea, 0, 1);
+
+		alert.getDialogPane().setExpandableContent(expContent);
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == yesButton) {
+			return true;
+		}
+		return false;
 	}
 	
 	public void showTestResults() {	// von http://code.makery.ch/blog/javafx-dialogs-official/
