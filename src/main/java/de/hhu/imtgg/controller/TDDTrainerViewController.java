@@ -66,8 +66,8 @@ public class TDDTrainerViewController {
 		if(!writeafailtest) return;
 		
 		
-		TDDCompiler.getTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
-		TDDCompiler.getSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
+		TDDCompiler.setTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
+		TDDCompiler.setSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
 		
 		boolean checkCompile = TDDCompiler.checkCompile();
 		if(checkCompile) {
@@ -107,8 +107,8 @@ public class TDDTrainerViewController {
 		if(!makethetestpass) return;
 		
 		
-		TDDCompiler.getTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
-		TDDCompiler.getSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
+		TDDCompiler.setTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
+		TDDCompiler.setSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
 		
 		boolean checkCompile = TDDCompiler.checkCompile();
 		if(checkCompile) {
@@ -132,8 +132,8 @@ public class TDDTrainerViewController {
 		if(!refactor) return;
 		
 		
-		TDDCompiler.getTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
-		TDDCompiler.getSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
+		TDDCompiler.setTestClass(TDDTViewController.getTestCodeClassName(), testCode.getText());
+		TDDCompiler.setSourceClass(TDDTViewController.getSourceCodeClassName(), sourceCode.getText());
 		
 		boolean checkCompile = TDDCompiler.checkCompile();
 		if(checkCompile) {
