@@ -106,12 +106,7 @@ public class TDDAlert {
 		if (result.get() == yesButton) {
 			return true;
 		}
-		else if (result.get() == noButton) {
-			return false;
-		}
 		return false;
-	
-		//alert.showAndWait();
 	}
 	
 	public void showTestResults() {	// von http://code.makery.ch/blog/javafx-dialogs-official/
