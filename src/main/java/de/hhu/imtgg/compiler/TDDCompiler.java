@@ -60,8 +60,6 @@ public class TDDCompiler {
 		return fails;
 	}
 	
-	
-	
 	public static void resetFails() {
 		fails = "";
 	}
