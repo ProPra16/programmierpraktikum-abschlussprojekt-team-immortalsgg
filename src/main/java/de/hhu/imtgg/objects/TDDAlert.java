@@ -71,6 +71,49 @@ public class TDDAlert {
 		alert.showAndWait();
 	}
 	
+	public boolean compileErrorModeSwitchAlert(int klasse) { // alert das der Test nicht kompiliert und ob man trotzdem switchen will
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("TDD Trainer by Team ImmortalsGG");
+		alert.setHeaderText(null);
+		alert.setContentText("Deine Tests kompillieren nicht!\nMöchtest du den Modus trotzdem wechseln?");
+		
+		ButtonType yesButton = new ButtonType("Ja");
+		ButtonType noButton = new ButtonType("Nein, abbrechen!");
+
+		alert.getButtonTypes().setAll(yesButton, noButton);
+		
+		String exceptionText = TDDCompiler.getCompileErrors(klasse);
+
+		Label label = new Label("Fehlermeldung:");
+
+		TextArea textArea = new TextArea(exceptionText);
+		textArea.setEditable(false);
+		textArea.setWrapText(true);
+
+		textArea.setMaxWidth(Double.MAX_VALUE);
+		textArea.setMaxHeight(Double.MAX_VALUE);
+		GridPane.setVgrow(textArea, Priority.ALWAYS);
+		GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+		GridPane expContent = new GridPane();
+		expContent.setMaxWidth(Double.MAX_VALUE);
+		expContent.add(label, 0, 0);
+		expContent.add(textArea, 0, 1);
+
+		alert.getDialogPane().setExpandableContent(expContent);
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == yesButton) {
+			return true;
+		}
+		else if (result.get() == noButton) {
+			return false;
+		}
+		return false;
+	
+		//alert.showAndWait();
+	}
+	
 	public void showTestResults() {	// von http://code.makery.ch/blog/javafx-dialogs-official/
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("TDD Trainer by Team ImmortalsGG");

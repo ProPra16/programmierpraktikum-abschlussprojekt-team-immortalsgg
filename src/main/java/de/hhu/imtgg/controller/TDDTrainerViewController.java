@@ -76,21 +76,30 @@ public class TDDTrainerViewController {
 				
 						
 			if(TDDCompiler.checkTests1Failed()) {
-				new TDDAlert("MakeTheTestPass",false,true,false).switchedModeAlert();
-				sourceCode.setEditable(true);
-				testCode.setEditable(false);
-				leftSaveButton.setStyle("-fx-border-color: green;");
-				rightSaveButton.setStyle("-fx-border-color: red;");
-				sourceCode.setStyle("-fx-border-color: green;");
-				testCode.setStyle("-fx-border-color: red");
-				bottomStatusText.setText("Du befindest dich im Modus MakeTheTestPass");
-				sourceCodeSave = sourceCode.getText();
+				switchToMakeTheTestPass();
 			}
 		
 		}
 		
-		else new TDDAlert("Test").compileError(1);
-			
+		else {
+			TDDAlert alert = new TDDAlert();
+			boolean clickYes = alert.compileErrorModeSwitchAlert(1);
+			if (clickYes) {
+				switchToMakeTheTestPass();
+			}
+		}		
+	}
+
+	private void switchToMakeTheTestPass() {
+		new TDDAlert("MakeTheTestPass",false,true,false).switchedModeAlert();
+		sourceCode.setEditable(true);
+		testCode.setEditable(false);
+		leftSaveButton.setStyle("-fx-border-color: green;");
+		rightSaveButton.setStyle("-fx-border-color: red;");
+		sourceCode.setStyle("-fx-border-color: green;");
+		testCode.setStyle("-fx-border-color: red");
+		bottomStatusText.setText("Du befindest dich im Modus MakeTheTestPass");
+		sourceCodeSave = sourceCode.getText();
 	}
 	
 	@FXML
