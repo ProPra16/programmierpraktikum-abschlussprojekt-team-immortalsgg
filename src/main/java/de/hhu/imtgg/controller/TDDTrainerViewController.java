@@ -113,14 +113,32 @@ public class TDDTrainerViewController {
 		boolean checkCompile = TDDCompiler.checkCompile();
 		if(checkCompile) {
 			if(TDDCompiler.checkTestsAllSuccess()) {
-				new TDDAlert("Refactor",false,false,true).switchedModeAlert();
+				TDDAlert alert = new TDDAlert();
+				boolean clickYes = alert.refactorQuestion();
+				if (clickYes) {
+					new TDDAlert("Refactor",false,false,true).switchedModeAlert();
+					leftSaveButton.setStyle("-fx-border-color: red;");
+					refactorButton.setStyle("-fx-border-color: green;");
+					sourceCode.setStyle("-fx-border-color: black;");
+					bottomStatusText.setText("Du befindest dich im Modus Refactor");
+				} else {
+					testCode.setEditable(true);
+					sourceCode.setEditable(false);
+					refactorButton.setStyle("-fx-border-color: red;");
+					rightSaveButton.setStyle("-fx-border-color: green;");
+					sourceCode.setStyle("-fx-border-color: red;");
+					testCode.setStyle("-fx-border-color: green;");
+					new TDDAlert("WriteAFailTest",true,false,false).switchedModeAlert();
+					bottomStatusText.setText("Du befindest dich im Modus WriteAFailTest");
+				}
+				/*new TDDAlert("Refactor",false,false,true).switchedModeAlert();
 				leftSaveButton.setStyle("-fx-border-color: red;");
 				refactorButton.setStyle("-fx-border-color: green;");
 				sourceCode.setStyle("-fx-border-color: black;");
-				bottomStatusText.setText("Du befindest dich im Modus Refactor");
+				bottomStatusText.setText("Du befindest dich im Modus Refactor");*/
 
 			}
-			else new TDDAlert("Du musst alle Tests bestehen um in den Modus: Refactor zugelangen!").showTestResults();
+			else new TDDAlert("Du musst alle Tests bestehen um den Modus zu wechseln!").showTestResults();
 			
 		}
 		else new TDDAlert("Source").compileError(2);

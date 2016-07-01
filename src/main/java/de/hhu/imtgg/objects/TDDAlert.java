@@ -167,4 +167,22 @@ public class TDDAlert {
 		alert.showAndWait();
 	}
 	
+	public boolean refactorQuestion() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("TDD Trainer by Team ImmortalsGG");
+		alert.setHeaderText(null);
+		alert.setContentText("Möchtest du deinen Code refactorn bevor du einen neuen Test schreibst?");
+		
+		ButtonType yesButton = new ButtonType("Ja");
+		ButtonType noButton = new ButtonType("Nein, ich möchte einen neuen Test schreiben.");
+
+		alert.getButtonTypes().setAll(yesButton, noButton);
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == yesButton) {
+			return true;
+		}
+		return false;
+	}
+	
 }
