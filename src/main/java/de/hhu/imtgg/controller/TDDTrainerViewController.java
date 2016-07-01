@@ -263,16 +263,12 @@ public class TDDTrainerViewController {
 			while(testCodeTimerStop) {
 				testCodeTimer.setText(String.valueOf(testCodeCounter));
 				testCodeCounter--;
-				if(testCodeCounter == -1) {
-					testCodeCounter = TDDTViewController.getBbyMinute();
-					testCode.setText(testCodeSave);
-				}
 				
 				if(testCodeCounter > farbe1) testCodeTimer.setStyle("-fx-fill: lime;"); // feature l‰sst farben gr¸n gelb oder rot erscheinen jenach wie viel zeit noch da ist
 				else if(testCodeCounter > farbe2) testCodeTimer.setStyle("-fx-fill: gold;");
 				else if(testCodeCounter > farbe3) testCodeTimer.setStyle("-fx-fill: orange;");
 				else if(testCodeCounter > farbe4) testCodeTimer.setStyle("-fx-fill: orangered;");
-				else if(testCodeCounter > 0) testCodeTimer.setStyle("-fx-fill: red;");
+				else if(testCodeCounter >= 0) testCodeTimer.setStyle("-fx-fill: red;");
 
 				
 				for(int i = 40; i > 0; i--) { // feature l‰‰st den counter verblassen
@@ -284,6 +280,10 @@ public class TDDTrainerViewController {
 					}
 					testCodeTimer.setOpacity(i*0.025);
 				}
+				if(testCodeCounter == -1) {
+					testCodeCounter = TDDTViewController.getBbyMinute();
+					testCode.setText(testCodeSave);
+				}
 			}
 		});
 		testCodeTimerThread.start();
@@ -294,15 +294,12 @@ public class TDDTrainerViewController {
 			while(sourceCodeTimerStop) {
 				sourceCodeTimer.setText(String.valueOf(sourceCodeCounter));
 				sourceCodeCounter--;
-				if(sourceCodeCounter == -1) {
-					sourceCodeCounter = TDDTViewController.getBbyMinute();
-					sourceCode.setText(sourceCodeSave);
-				}
+				
 				if(sourceCodeCounter > farbe1) sourceCodeTimer.setStyle("-fx-fill: lime;"); // feature l‰sst farben gr¸n gelb oder rot erscheinen jenach wie viel zeit noch da ist
 				else if(sourceCodeCounter > farbe2) sourceCodeTimer.setStyle("-fx-fill: gold;");
 				else if(sourceCodeCounter > farbe3) sourceCodeTimer.setStyle("-fx-fill: orange;");
 				else if(sourceCodeCounter > farbe4) sourceCodeTimer.setStyle("-fx-fill: orangered;");
-				else if(sourceCodeCounter > 0) sourceCodeTimer.setStyle("-fx-fill: red;");
+				else if(sourceCodeCounter >= 0) sourceCodeTimer.setStyle("-fx-fill: red;");
 
 				
 				for(int i = 40; i > 0; i--) { // feature l‰‰st den counter verblassen
@@ -313,6 +310,10 @@ public class TDDTrainerViewController {
 						e.printStackTrace();
 					}
 					sourceCodeTimer.setOpacity(i*0.025);
+				}
+				if(sourceCodeCounter == -1) {
+					sourceCodeCounter = TDDTViewController.getBbyMinute();
+					sourceCode.setText(sourceCodeSave);
 				}
 			}
 		});
