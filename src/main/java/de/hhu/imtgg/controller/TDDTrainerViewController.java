@@ -76,6 +76,13 @@ public class TDDTrainerViewController {
 		
 		new TDDAlert("WriteAFailTest",true,false,false).switchedModeAlert();
 
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		sourceCodeTimer.setStyle("-fx-fill: black;");
+		sourceCodeTimer.setOpacity(0.25);
 		
 	}
 	
@@ -116,19 +123,8 @@ public class TDDTrainerViewController {
 			if(TDDCompiler.checkTests1Failed()) {				
 				testCodeTimerStop = false;
 				sourceCodeTimerStop = true;
-				sourceCodeCounter = TDDTViewController.getBbyMinute();
-				if(TDDTViewController.getBabyStepsMode())
-					startSourceCodeTimer();
-			
+				sourceCodeCounter = TDDTViewController.getBbyMinute();	
 				switchToMakeTheTestPass();
-				try { // damit man sieht auf wie viel sek man auf der anderen seite war , 1sek warten damit der timer durchläuft und nichts dazwischen kommt
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				testCodeTimer.setOpacity(0.25);
-				testCodeTimer.setStyle("-fx-fill: black;");
 			}
 		
 		}
@@ -152,6 +148,20 @@ public class TDDTrainerViewController {
 		testCode.setStyle("-fx-border-color: red");
 		bottomStatusText.setText("Du befindest dich im Modus MakeTheTestPass");
 		sourceCodeSave = sourceCode.getText();
+		
+		testCodeTimerStop = false;
+		sourceCodeTimerStop = true;
+		sourceCodeCounter = TDDTViewController.getBbyMinute();
+		if(TDDTViewController.getBabyStepsMode())
+			startSourceCodeTimer();
+		
+		try { // damit man sieht auf wie viel sek man auf der anderen seite war , 1sek warten damit der timer durchläuft und nichts dazwischen kommt
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		testCodeTimer.setOpacity(0.25);
+		testCodeTimer.setStyle("-fx-fill: black;");
 	}
 	
 	@FXML
@@ -170,7 +180,7 @@ public class TDDTrainerViewController {
 				sourceCode.setStyle("-fx-border-color: black;");
 				bottomStatusText.setText("Du befindest dich im Modus Refactor");
 				testCodeSave = testCode.getText(); //babymode
-				
+				new TDDAlert("Refactor",false,false,true).switchedModeAlert();
 				sourceCodeTimerStop = false;
 				try {
 					Thread.sleep(1000);
@@ -178,10 +188,9 @@ public class TDDTrainerViewController {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				testCodeTimer.setOpacity(0.25);
-				testCodeTimer.setStyle("-fx-fill: black;");
+				sourceCodeTimer.setOpacity(0.25);
+				sourceCodeTimer.setStyle("-fx-fill: black;");
 				
-				new TDDAlert("Refactor",false,false,true).switchedModeAlert();
 
 			}
 			else new TDDAlert("Du musst alle Tests bestehen um in den Modus: Refactor zugelangen!").showTestResults();
@@ -327,6 +336,10 @@ public class TDDTrainerViewController {
 	
 	//Helpbuttons
 	
+	@FXML
+	private void pressedHelpButtonMethod() {
+		TDDTHelpButtons.howToWriteAMethod();
+	}
 	
 	
 }
