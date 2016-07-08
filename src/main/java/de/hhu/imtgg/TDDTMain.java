@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import de.hhu.imtgg.controller.TDDTDarkModeController;
+import de.hhu.imtgg.controller.TDDTrainerViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,6 +27,7 @@ public class TDDTMain extends Application {
 		TDDTMain.primarystage.setTitle("TDD Trainer by Team ImmortalsGG");
 		
 		initTDDTViewLayoutNormalMode();
+		primarystage.setOnCloseRequest(e -> TDDTrainerViewController.interruptTimer()); //babymode
 	}
 
 	public static void main(String[] args) {

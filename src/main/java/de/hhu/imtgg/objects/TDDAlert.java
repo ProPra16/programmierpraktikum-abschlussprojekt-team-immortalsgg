@@ -5,6 +5,8 @@ import java.util.Optional;
 import de.hhu.imtgg.TDDTMain;
 import de.hhu.imtgg.compiler.TDDCompiler;
 import de.hhu.imtgg.controller.TDDTDarkModeController;
+import de.hhu.imtgg.controller.TDDTViewController;
+import de.hhu.imtgg.controller.TDDTrainerViewController;
 import de.hhu.imtgg.controller.TDDTrainerViewController;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -52,6 +54,8 @@ public class TDDAlert {
 		if (result.get() == yesButton) {
 			if(TDDTDarkModeController.getDarkMode()) TDDTMain.initTDDTViewLayoutDarkMode();
 			else TDDTMain.initTDDTViewLayoutNormalMode();
+			
+			TDDTViewController.setBbyMinuteDefault();
 		}
 		else if (result.get() == noButton) {
 			return;
