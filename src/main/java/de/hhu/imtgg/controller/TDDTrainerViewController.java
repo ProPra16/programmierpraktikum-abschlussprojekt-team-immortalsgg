@@ -28,8 +28,8 @@ public class TDDTrainerViewController {
 	private static Thread testCodeTimerThread = new Thread(() -> {}); //thread für rechten timer , der drüber für den linken
 	@FXML private Text testCodeTimer; // die javafx Texte wo der timer tickt
 	@FXML private Text sourceCodeTimer;
-	private boolean sourceCodeTimerStop = false;	// an / aus für timer
-	private boolean testCodeTimerStop = true; 
+	private static boolean sourceCodeTimerStop = false;	// an / aus für timer
+	private static boolean testCodeTimerStop = true; 
 	private int testCodeCounter = TDDTViewController.getBbyMinute();
 	private int sourceCodeCounter = TDDTViewController.getBbyMinute();
 	
@@ -329,8 +329,9 @@ public class TDDTrainerViewController {
 	
 
 	public static void interruptTimer() { //babymode
-		testCodeTimerThread.stop();
-		sourceCodeTimerThread.stop();
+	
+		testCodeTimerStop = false;
+		sourceCodeTimerStop = false;
 	}
 	
 	

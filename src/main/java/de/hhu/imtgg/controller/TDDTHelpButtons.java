@@ -54,7 +54,7 @@ public class TDDTHelpButtons {
 		pane.setBottom(bottom);
 		Scene scene = new Scene(pane,600,400);
 		methodHelpStage.setScene(scene);
-		methodHelpStage.setTitle("TDD Trainer by ImmortalsGG - How To: eine Methode schreiben");
+		methodHelpStage.setTitle("TDD Trainer by ImmortalsGG - How To: Eine Methode schreiben");
 		methodHelpStage.show();
 	}
 	

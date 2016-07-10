@@ -1,6 +1,8 @@
 package de.hhu.imtgg.controller;
 
 
+import java.util.ArrayList;
+
 import de.hhu.imtgg.TDDTMain;
 import de.hhu.imtgg.objects.TDDTest;
 import de.hhu.imtgg.objects.TDDUebungTests;
@@ -16,9 +18,12 @@ public class TDDTViewController {
 	
 	@FXML private MenuButton uebungsButton;
 	@FXML private Label darkModeStatus;
-	private String[] uebungsnamen = TDDUebungTests.uebungsNamen();
-	private TDDTest[] uebungtests = TDDUebungTests.getAllUebungen();
+	
+	private ArrayList<String> uebungsnamen = TDDUebungTests.getUebungsnamen();
+	private ArrayList<String> uebungsdescr = TDDUebungTests.getUebungsDescr();
+	private ArrayList<TDDTest> uebungtests = TDDUebungTests.getUebungsCode();
 	private static String sourceCodeClassName = "";
+	
 	@FXML private Spinner bbyStepsMinute;
 	private static int bbyMinutes = 1;
 	private static String testCodevorlage;
@@ -30,14 +35,14 @@ public class TDDTViewController {
 	
 	@FXML
 	private void initialize() { // haut alle uebungen aus dem ordner Uebungen in den Menubutton
-		int uebungsanzahl = uebungsnamen.length;
+		int uebungsanzahl = uebungsnamen.size();
 		babySteps = false; // reset 
 		setSpinnerConfig();
 		
 		for(int i = 0; i < uebungsanzahl; i++) {
 			MenuItem menuitem = new MenuItem();
-			String testcode = uebungtests[i].getTestCode();
-			String uebungsclassname = uebungsnamen[i];
+			String testcode = uebungtests.get(i).getTestCode();
+			String uebungsclassname = uebungsnamen.get(i);
 			menuitem.setText(uebungsclassname);
 			int currentuebung = i;
 			menuitem.setOnAction(e -> menuItemActions(testcode,getSourceCode(currentuebung),uebungsclassname));
@@ -64,7 +69,7 @@ public class TDDTViewController {
 		return bbyMinutes*60;
 	}
 	private String getSourceCode(int i) { // kleines geruest fuer die ausgewaehlte uebung
-		return "public class " + uebungsnamen[i] +" {\n\n"
+		return uebungsdescr.get(i) + "\npublic class " + uebungsnamen.get(i) +" {\n\n"
 				+ "}";
 	}
 	
