@@ -24,6 +24,13 @@ public class TDDAlert {
 	private boolean source;
 	private boolean refactor;
 		
+	/**
+	 * konstruktor für einen Alert , setzt werte auf verschiedene params , siehe params
+	 * @param modus
+	 * @param test
+	 * @param source
+	 * @param refactor
+	 */
 	public TDDAlert(String modus,boolean test,boolean source,boolean refactor) {
 		this.message = modus;
 		this.test = test;
@@ -31,14 +38,24 @@ public class TDDAlert {
 		this.refactor = refactor;
 	}
 	
+	/**
+	 * konstruktor für einen alert setzt nur wert auf message siehe param
+	 * @param message
+	 */
 	public TDDAlert(String message) {
 		this.message = message;
 	}
 	
+	/**
+	 * default konstruktor 
+	 */
 	public TDDAlert() {
 		
 	}
 	
+	/**
+	 * fragt ob man wirklich sicher ist , ja weiter oder nein abbrechen
+	 */
 	public void areUSureMessage() {
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("TDDTrainer by Team ImmortalsGG");
@@ -62,6 +79,9 @@ public class TDDAlert {
 		}
 	}
 	
+	/**
+	 * der modus wird geswitcht , der modus wird hier auch direkt geändert und ein alert kommt als information
+	 */
 	public void switchedModeAlert() { // alert das modus geswitcht und switcht booleans in tddvcontroller
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("TDD Trainer by Team ImmortalsGG");
@@ -75,6 +95,11 @@ public class TDDAlert {
 		alert.showAndWait();
 	}
 	
+	/**
+	 * gibt einen alert aus der sagt dass der test nicht compiliert aber fragt ob man dennoch weiter will
+	 * @param klasse
+	 * @return
+	 */
 	public boolean compileErrorModeSwitchAlert(int klasse) { // alert das der Test nicht kompiliert und ob man trotzdem switchen will
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("TDD Trainer by Team ImmortalsGG");
@@ -113,6 +138,9 @@ public class TDDAlert {
 		return false;
 	}
 	
+	/**
+	 * gibt einen alert aus und zeigt die test results
+	 */
 	public void showTestResults() {	// von http://code.makery.ch/blog/javafx-dialogs-official/
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("TDD Trainer by Team ImmortalsGG");
@@ -142,6 +170,10 @@ public class TDDAlert {
 		alert.showAndWait();
 	}
 	
+	/**
+	 * gibt einen alert aus und zeigt an das der code nicht compiliert und dazu die compilierfehler
+	 * @param klasse
+	 */
 	public void compileError(int klasse) {  // von http://code.makery.ch/blog/javafx-dialogs-official/
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("TDD Trainer by Team ImmortalsGG");

@@ -32,7 +32,10 @@ public class TDDTViewController {
 	private boolean tracking = false;
 	private boolean atdd = false;
 	
-	
+	/**
+	 * initialisiert dass hauptmenu layout mit wichtigen werten
+	 * die übungen werden geladen und einstellungen konfiguriert(eingestellt)
+	 */
 	@FXML
 	private void initialize() { // haut alle uebungen aus dem ordner Uebungen in den Menubutton
 		int uebungsanzahl = uebungsnamen.size();
@@ -50,24 +53,43 @@ public class TDDTViewController {
 		}	
 	}
 	
+	/**
+	 * setzt den spinner auf werte von 1 - 10 
+	 */
 	private void setSpinnerConfig() {
 		SpinnerValueFactory svf = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10);
 		bbyStepsMinute.setValueFactory(svf);
 		bbyStepsMinute.setOnMouseClicked(e -> getSpinnerValue());
 	}
 	
+	/**
+	 * gibt den wert von dem spinner zurück
+	 */
 	private void getSpinnerValue() {
 		String minutes = bbyStepsMinute.getValue().toString();
 		bbyMinutes = Integer.parseInt(minutes);
 	}
 	
+	/**
+	 * setzt den spinner auf einen default wert
+	 */
 	public static void setBbyMinuteDefault() { //  falls man zurück ins hauptmenu geht , der wert zurückgesetzt wird
 		bbyMinutes = 1;
 	}
 	
+	/**
+	 * hilfsfunktion
+	 * @return
+	 */
 	public static int getBbyMinute() {
 		return bbyMinutes*60;
 	}
+	
+	/**
+	 * erzeugt einen gestell für den sourcecode
+	 * @param i
+	 * @return einen String welches das gerüst fü+r den SourceCode beinhaltet
+	 */
 	private String getSourceCode(int i) { // kleines geruest fuer die ausgewaehlte uebung
 		return uebungsdescr.get(i) + "\npublic class " + uebungsnamen.get(i) +" {\n\n"
 				+ "}";

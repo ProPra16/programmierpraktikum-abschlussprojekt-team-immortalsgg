@@ -46,6 +46,10 @@ public class TDDTrainerViewController {
 	private String sourceCodeSave;
 	private String testCodeSave;
 	
+	/**
+	 * ist der zurückinshauptmenu button gedrückt sowird abgefragt ob man dies wirklich möchte
+	 * und die werte die wichtig für einen neustart sind wieder auf den standard wert zurückgesetzt
+	 */
 	@FXML
 	private void pressedBackButton() { // man kehrt ins hauptmenu zurueck
 		writeafailtest = true;
@@ -54,6 +58,11 @@ public class TDDTrainerViewController {
 		new TDDAlert().areUSureMessage();
 	}
 	
+	/**
+	 * ist dieser button gedrückt wird man gefragt ob man wirklich zurück in den testmodus möchte
+	 * ja oder nein -> ja man kommt in den testmode alle werte die dafür nötig sind ändern sich
+	 * nein -> es passiert nichts
+	 */
 	@FXML
 	private void changeBackToTestMode() {
 		if(writeafailtest) return;
@@ -86,6 +95,9 @@ public class TDDTrainerViewController {
 		
 	}
 	
+	/**
+	 * initialisiert die fxml datei(stage) mit den standard werten
+	 */
 	@FXML
 	private void initialize() {
 		sourceCode.setStyle("-fx-border-color: red;");
@@ -106,6 +118,10 @@ public class TDDTrainerViewController {
 		}
 	}
 	
+	/**
+	 * TDD Aktion: es wird überprüft ob ein test fehlschlägt ,dann darf man weiter
+	 * wenn es aber nicht compiliert wird man trotzdem gefragt ob man weiter möchte oder nicht
+	 */
 	@FXML
 	private void testCodeSaveButtonPressed() { // der rechte savebutton 
 		if(!writeafailtest) return;
@@ -137,7 +153,10 @@ public class TDDTrainerViewController {
 			}
 		}		
 	}
-
+	
+	/**
+	 * werte die sich nach einer phase ändern in einer methode refactored
+	 */
 	private void switchToMakeTheTestPass() {
 		new TDDAlert("MakeTheTestPass",false,true,false).switchedModeAlert();
 		sourceCode.setEditable(true);
@@ -163,7 +182,10 @@ public class TDDTrainerViewController {
 		testCodeTimer.setOpacity(0.25);
 		testCodeTimer.setStyle("-fx-fill: black;");
 	}
-	
+	/**
+	 * tdd aktion:
+	 * sind alle tests bestanden darf man in den refactor modus
+	 */
 	@FXML
 	private void sourceCodeSaveButtonPressed() { // linker savebutton
 		if(!makethetestpass) return;
@@ -200,6 +222,11 @@ public class TDDTrainerViewController {
 		
 	}
 	
+	/**
+	 * tdd aktion:
+	 * sind immernoch alle tests bestanden so darf man zurück zu den tests.
+	 * sind compilier fehler oder tests die fehlschlagen muss man diese erst nochbeheben
+	 */
 	@FXML
 	private void refactorButtonPressed() { // refactor button linke seite
 		if(!refactor) return;
@@ -221,19 +248,34 @@ public class TDDTrainerViewController {
 		
 	}
 	
-	
+	/**
+	 * setzt den {@link refactor} mode auf true oder false
+	 * @param mode
+	 */
 	public static void setRefactorMode(boolean mode) {
 		refactor = mode;
 	}
 	
+	/**
+	 * setzt den {@link makethetestpass} mode auf true oder false
+	 * @param mode
+	 */
 	public static void setSourceCodeMode(boolean mode) {
 		makethetestpass = mode;
 	}
 	
+	/**
+	 * setzt den {@link writeafailtest} mode auf true oder false
+	 * @param mode
+	 */
 	public static void setTestMode(boolean mode) {
 		writeafailtest = mode;
 	}
 	
+	/**
+	 * erzeugt einen alert , welcher ein neues fenster aufruft in dem man die wahl hat
+	 * weiter zu refactoren oder zurück zu den tests zugehen
+	 */
 	public void refactorAlert() { // von http://code.makery.ch/blog/javafx-dialogs-official/
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("TDDTrainer by Team ImmortalsGG");
@@ -266,7 +308,10 @@ public class TDDTrainerViewController {
 	}
 	
 	
-	
+	/**
+	 * startet einen visuell sichtbaren timer der von einer gegebenen anzahl an sekunden runterläuft
+	 * 
+	 */
 	private void startTestCodeTimer() { // babymode
 		testCodeTimerThread = new Thread(() -> {
 			while(testCodeTimerStop) {
@@ -297,6 +342,10 @@ public class TDDTrainerViewController {
 		testCodeTimerThread.start();
 	}
 	
+	/**
+	 * startet einen visuell sichtbaren timer der von einer gegebenen anzahl an sekunden runterläuft
+	 * 
+	 */
 	private void startSourceCodeTimer() {
 		sourceCodeTimerThread = new Thread(() -> {
 			while(sourceCodeTimerStop) {
@@ -327,7 +376,9 @@ public class TDDTrainerViewController {
 		sourceCodeTimerThread.start();
 	}
 	
-
+	/**
+	 * unterbricht die timer
+	 */
 	public static void interruptTimer() { //babymode
 	
 		testCodeTimerStop = false;
@@ -337,6 +388,9 @@ public class TDDTrainerViewController {
 	
 	//Helpbuttons
 	
+	/**
+	 * ruft {@link TDDTHelpButtons.howToWriteAMethod} auf wenn der button gedrückt worden ist
+	 */
 	@FXML
 	private void pressedHelpButtonMethod() {
 		TDDTHelpButtons.howToWriteAMethod();

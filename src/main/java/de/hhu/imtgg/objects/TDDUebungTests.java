@@ -10,7 +10,10 @@ import java.util.List;
 
 public class TDDUebungTests {
 	
-	
+	/**
+	 * filtert den uebungscode aus einer datei 
+	 * @return speichert die codes in einer arraylist
+	 */
 	public static ArrayList<TDDTest> getUebungsCode() {
 		ArrayList<TDDTest> uebungsCode = new ArrayList<TDDTest>();
 		try {
@@ -35,7 +38,10 @@ public class TDDUebungTests {
 		return uebungsCode;
 	}
 	
-	
+	/**
+	 * filtert die übungsbeschreibung aus einer datei
+	 * @return speichert die beschreibungen in einer arraylist
+	 */
 	public static ArrayList<String> getUebungsDescr() {
 		ArrayList<String> uebungsdescr = new ArrayList<String>();
 		try {
@@ -61,7 +67,10 @@ public class TDDUebungTests {
 
 	}
 	
-	
+	/**
+	 * filtert die übungsnamen aus einer datei
+	 * @return speichert die namen in einer arraylist
+	 */
 	public static ArrayList<String> getUebungsnamen() { // filtert Uebungsnamen heraus
 		ArrayList<String> uebungsnamen = new ArrayList<String>();
 		try {

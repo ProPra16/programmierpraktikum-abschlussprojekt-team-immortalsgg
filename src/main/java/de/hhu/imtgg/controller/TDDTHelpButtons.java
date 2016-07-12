@@ -19,6 +19,9 @@ public class TDDTHelpButtons {
 	
 	private static Stage methodHelpStage = new Stage();
 	
+	/**
+	 * erstellt eine neue stage , welches mit bildern zeigt wie man eine methode in java schreibt
+	 */
 	public static void howToWriteAMethod() {
 		BorderPane pane = new BorderPane();
 		
@@ -55,9 +58,14 @@ public class TDDTHelpButtons {
 		Scene scene = new Scene(pane,600,400);
 		methodHelpStage.setScene(scene);
 		methodHelpStage.setTitle("TDD Trainer by ImmortalsGG - How To: Eine Methode schreiben");
+		Image icon = new Image("de/hhu/imtgg/layout/imtggicon.png");
+		methodHelpStage.getIcons().add(icon);
 		methodHelpStage.show();
 	}
 	
+	/**
+	 * schlieﬂt das fenster wenn die hauptanwendung geschlossen wird
+	 */
 	public static void closeAllHelpWindows() {
 		methodHelpStage.close();
 	}

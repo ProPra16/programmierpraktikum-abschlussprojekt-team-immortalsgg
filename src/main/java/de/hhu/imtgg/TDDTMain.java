@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -25,6 +26,8 @@ public class TDDTMain extends Application {
 	@Override
 	public void start(Stage stage) {
 		TDDTMain.primarystage = stage;
+		Image icon = new Image("de/hhu/imtgg/layout/imtggicon.png");
+		primarystage.getIcons().add(icon); // setzt ein 32x32 icon
 		TDDTMain.primarystage.setTitle("TDD Trainer by Team ImmortalsGG");
 		
 		initTDDTViewLayoutNormalMode();
@@ -35,8 +38,11 @@ public class TDDTMain extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
-	public static void initTDDTViewLayoutDarkMode() {			// laedt layout fuer startbild aus FXML -> siehe TDDTView.fmxl
+	/**
+	 * Laedt eine FXML auf die stage , welche den DarkMode beinhaltet
+	 * Layout = {@link initTDDTViewLayNormalMode} , nur in Schwarz statt weiß
+	 */
+	public static void initTDDTViewLayoutDarkMode() {			
 		 try {
 			 FXMLLoader loader = new FXMLLoader();
 			 loader.setLocation(TDDTMain.class.getResource("layout/TDDTViewDarkMode.fxml"));
@@ -48,7 +54,10 @@ public class TDDTMain extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * lädt eine FXML auf die stage , welche ein layout für das Start menue beinhaltet
+	 * 
+	 */
 	public static void initTDDTViewLayoutNormalMode() {			// laedt layout fuer startbild aus FXML -> siehe TDDTView.fmxl
 		 try {
 			 FXMLLoader loader = new FXMLLoader();
@@ -62,7 +71,10 @@ public class TDDTMain extends Application {
 		}
 	}
 	
-	
+	/**
+	 * laedt eine FXML auf die stage , welche nach auswahl einer Uebung erscheint
+	 * layout beeinhaltet save buttons und textareas und eine menübar mit verschiedenen optionen 
+	 */
 	public static void initTDDTrainerViewNormalMode(String testcode,String sourcecode) { //komisch gemacht doch die textarea laesst sich veraendern beim start
 		try {
 			FXMLLoader loader = new FXMLLoader();
