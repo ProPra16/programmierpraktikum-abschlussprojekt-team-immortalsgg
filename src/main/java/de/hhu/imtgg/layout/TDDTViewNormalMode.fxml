@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -36,17 +37,17 @@
                <font>
                   <Font name="Serif Italic" size="15.0" />
                </font></Label>
-            <RadioButton layoutX="234.0" layoutY="224.0" mnemonicParsing="false" text="Babysteps" AnchorPane.bottomAnchor="159.0" AnchorPane.leftAnchor="234.0">
+            <RadioButton layoutX="234.0" layoutY="224.0" mnemonicParsing="false" onAction="#babyStepsActivated" text="Babysteps" AnchorPane.bottomAnchor="159.0" AnchorPane.leftAnchor="234.0">
                <font>
                   <Font name="Serif Italic" size="13.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="238.0" layoutY="251.0" mnemonicParsing="false" text="Tracking" AnchorPane.bottomAnchor="139.0" AnchorPane.leftAnchor="234.0">
+            <RadioButton layoutX="238.0" layoutY="251.0" mnemonicParsing="false" onAction="#trackingActivated" text="Tracking" AnchorPane.bottomAnchor="139.0" AnchorPane.leftAnchor="234.0">
                <font>
                   <Font name="Serif Italic" size="13.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="223.0" layoutY="277.0" mnemonicParsing="false" text="ATDD(Akzeptanztests)" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="234.0">
+            <RadioButton layoutX="223.0" layoutY="277.0" mnemonicParsing="false" onAction="#atddActivated" text="ATDD(Akzeptanztests)" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="234.0">
                <font>
                   <Font name="Serif Italic" size="13.0" />
                </font>
@@ -61,6 +62,7 @@
                   <Font name="Serif Italic" size="11.0" />
                </font>
             </Button>
+            <Spinner fx:id="bbyStepsMinute" layoutX="353.0" layoutY="196.0" prefHeight="11.0" prefWidth="52.0" scaleX="0.7" scaleY="0.7" AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="314.0" />
          </children>
       </AnchorPane>
    </center>

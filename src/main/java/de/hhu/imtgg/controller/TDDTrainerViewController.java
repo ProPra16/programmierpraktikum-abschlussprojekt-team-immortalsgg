@@ -2,19 +2,21 @@ package de.hhu.imtgg.controller;
 
 import java.util.Optional;
 
-import de.hhu.imtgg.TDDTMain;
 import de.hhu.imtgg.compiler.TDDCompiler;
 import de.hhu.imtgg.objects.TDDAlert;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.text.Text;
+import javafx.stage.WindowEvent;
 
 public class TDDTrainerViewController {
-	
+
 	@FXML private TextArea testCode;
 	@FXML private TextArea sourceCode;
 	@FXML private Button leftSaveButton;
@@ -22,12 +24,32 @@ public class TDDTrainerViewController {
 	@FXML private Button refactorButton;
 	@FXML private Text bottomStatusText;
 	
-	private String sourceCodeSave;
+	private static Thread sourceCodeTimerThread = new Thread(() -> {}); // damit man alles beendet wenn man hauptprogramm schließt
+	private static Thread testCodeTimerThread = new Thread(() -> {}); //thread für rechten timer , der drüber für den linken
+	@FXML private Text testCodeTimer; // die javafx Texte wo der timer tickt
+	@FXML private Text sourceCodeTimer;
+	private static boolean sourceCodeTimerStop = false;	// an / aus für timer
+	private static boolean testCodeTimerStop = true; 
+	private int testCodeCounter = TDDTViewController.getBbyMinute();
+	private int sourceCodeCounter = TDDTViewController.getBbyMinute();
+	
+	private int farbcounter = TDDTViewController.getBbyMinute();
+	private int farbe1 = farbcounter - farbcounter / 5;
+	private int farbe2 = farbcounter - (2*(farbcounter / 5));
+	private int farbe3 = farbcounter - (3*(farbcounter / 5));
+	private int farbe4 = farbcounter - (4*(farbcounter / 5));
 	
 	private static boolean writeafailtest = true; // booleans fuer den status der gerade ist
 	private static boolean makethetestpass = false;
 	private static boolean refactor = false;
 	
+	private String sourceCodeSave;
+	private String testCodeSave;
+	
+	/**
+	 * ist der zurückinshauptmenu button gedrückt sowird abgefragt ob man dies wirklich möchte
+	 * und die werte die wichtig für einen neustart sind wieder auf den standard wert zurückgesetzt
+	 */
 	@FXML
 	private void pressedBackButton() { // man kehrt ins hauptmenu zurueck
 		writeafailtest = true;
@@ -36,6 +58,11 @@ public class TDDTrainerViewController {
 		new TDDAlert().areUSureMessage();
 	}
 	
+	/**
+	 * ist dieser button gedrückt wird man gefragt ob man wirklich zurück in den testmodus möchte
+	 * ja oder nein -> ja man kommt in den testmode alle werte die dafür nötig sind ändern sich
+	 * nein -> es passiert nichts
+	 */
 	@FXML
 	private void changeBackToTestMode() {
 		if(writeafailtest) return;
@@ -45,11 +72,32 @@ public class TDDTrainerViewController {
 		rightSaveButton.setStyle("-fx-border-color: green;");
 		sourceCode.setStyle("-fx-border-color: red;");
 		testCode.setStyle("-fx-border-color: green;");
-		new TDDAlert("WriteAFailTest",true,false,false).switchedModeAlert();
 		bottomStatusText.setText("Du befindest dich im Modus WriteAFailTest");
 		sourceCode.setText(sourceCodeSave);
+		
+		sourceCodeCounter = TDDTViewController.getBbyMinute();
+		testCodeCounter = TDDTViewController.getBbyMinute();
+		sourceCodeTimerStop = false;
+		testCodeTimerStop = true;
+		
+		if(TDDTViewController.getBabyStepsMode())
+			startTestCodeTimer();
+		
+		new TDDAlert("WriteAFailTest",true,false,false).switchedModeAlert();
+
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		sourceCodeTimer.setStyle("-fx-fill: black;");
+		sourceCodeTimer.setOpacity(0.25);
+		
 	}
 	
+	/**
+	 * initialisiert die fxml datei(stage) mit den standard werten
+	 */
 	@FXML
 	private void initialize() {
 		sourceCode.setStyle("-fx-border-color: red;");
@@ -59,8 +107,21 @@ public class TDDTrainerViewController {
 		refactorButton.setStyle("-fx-border-color: red;");
 		sourceCode.setEditable(false);
 		bottomStatusText.setText("Du befindest dich im Modus WriteAFailTest");
+		
+		testCodeSave = TDDTViewController.getTestCodevorlage(); //Babymode
+		sourceCodeTimer.setText(String.valueOf(TDDTViewController.getBbyMinute()));
+		if(TDDTViewController.getBabyStepsMode())
+			startTestCodeTimer();
+		else {
+			testCodeTimer.setVisible(false);
+			sourceCodeTimer.setVisible(false);
+		}
 	}
 	
+	/**
+	 * TDD Aktion: es wird überprüft ob ein test fehlschlägt ,dann darf man weiter
+	 * wenn es aber nicht compiliert wird man trotzdem gefragt ob man weiter möchte oder nicht
+	 */
 	@FXML
 	private void testCodeSaveButtonPressed() { // der rechte savebutton 
 		if(!writeafailtest) return;
@@ -75,7 +136,10 @@ public class TDDTrainerViewController {
 				new TDDAlert("In dem Modus WriteAFailTest darf nur 1 Test fehlschlagen!").showTestResults();
 				
 						
-			if(TDDCompiler.checkTests1Failed()) {
+			if(TDDCompiler.checkTests1Failed()) {				
+				testCodeTimerStop = false;
+				sourceCodeTimerStop = true;
+				sourceCodeCounter = TDDTViewController.getBbyMinute();	
 				switchToMakeTheTestPass();
 			}
 		
@@ -89,7 +153,10 @@ public class TDDTrainerViewController {
 			}
 		}		
 	}
-
+	
+	/**
+	 * werte die sich nach einer phase ändern in einer methode refactored
+	 */
 	private void switchToMakeTheTestPass() {
 		new TDDAlert("MakeTheTestPass",false,true,false).switchedModeAlert();
 		sourceCode.setEditable(true);
@@ -100,8 +167,25 @@ public class TDDTrainerViewController {
 		testCode.setStyle("-fx-border-color: red");
 		bottomStatusText.setText("Du befindest dich im Modus MakeTheTestPass");
 		sourceCodeSave = sourceCode.getText();
+		
+		testCodeTimerStop = false;
+		sourceCodeTimerStop = true;
+		sourceCodeCounter = TDDTViewController.getBbyMinute();
+		if(TDDTViewController.getBabyStepsMode())
+			startSourceCodeTimer();
+		
+		try { // damit man sieht auf wie viel sek man auf der anderen seite war , 1sek warten damit der timer durchläuft und nichts dazwischen kommt
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		testCodeTimer.setOpacity(0.25);
+		testCodeTimer.setStyle("-fx-fill: black;");
 	}
-	
+	/**
+	 * tdd aktion:
+	 * sind alle tests bestanden darf man in den refactor modus
+	 */
 	@FXML
 	private void sourceCodeSaveButtonPressed() { // linker savebutton
 		if(!makethetestpass) return;
@@ -113,11 +197,22 @@ public class TDDTrainerViewController {
 		boolean checkCompile = TDDCompiler.checkCompile();
 		if(checkCompile) {
 			if(TDDCompiler.checkTestsAllSuccess()) {
-				new TDDAlert("Refactor",false,false,true).switchedModeAlert();
 				leftSaveButton.setStyle("-fx-border-color: red;");
 				refactorButton.setStyle("-fx-border-color: green;");
 				sourceCode.setStyle("-fx-border-color: black;");
 				bottomStatusText.setText("Du befindest dich im Modus Refactor");
+				testCodeSave = testCode.getText(); //babymode
+				new TDDAlert("Refactor",false,false,true).switchedModeAlert();
+				sourceCodeTimerStop = false;
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				sourceCodeTimer.setOpacity(0.25);
+				sourceCodeTimer.setStyle("-fx-fill: black;");
+				
 
 			}
 			else new TDDAlert("Du musst alle Tests bestehen um in den Modus: Refactor zugelangen!").showTestResults();
@@ -127,6 +222,11 @@ public class TDDTrainerViewController {
 		
 	}
 	
+	/**
+	 * tdd aktion:
+	 * sind immernoch alle tests bestanden so darf man zurück zu den tests.
+	 * sind compilier fehler oder tests die fehlschlagen muss man diese erst nochbeheben
+	 */
 	@FXML
 	private void refactorButtonPressed() { // refactor button linke seite
 		if(!refactor) return;
@@ -148,19 +248,34 @@ public class TDDTrainerViewController {
 		
 	}
 	
-	
+	/**
+	 * setzt den {@link refactor} mode auf true oder false
+	 * @param mode
+	 */
 	public static void setRefactorMode(boolean mode) {
 		refactor = mode;
 	}
 	
+	/**
+	 * setzt den {@link makethetestpass} mode auf true oder false
+	 * @param mode
+	 */
 	public static void setSourceCodeMode(boolean mode) {
 		makethetestpass = mode;
 	}
 	
+	/**
+	 * setzt den {@link writeafailtest} mode auf true oder false
+	 * @param mode
+	 */
 	public static void setTestMode(boolean mode) {
 		writeafailtest = mode;
 	}
 	
+	/**
+	 * erzeugt einen alert , welcher ein neues fenster aufruft in dem man die wahl hat
+	 * weiter zu refactoren oder zurück zu den tests zugehen
+	 */
 	public void refactorAlert() { // von http://code.makery.ch/blog/javafx-dialogs-official/
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("TDDTrainer by Team ImmortalsGG");
@@ -185,13 +300,101 @@ public class TDDTrainerViewController {
 			testCode.setStyle("-fx-border-color: green;");
 			new TDDAlert("WriteAFailTest",true,false,false).switchedModeAlert();
 			bottomStatusText.setText("Du befindest dich im Modus WriteAFailTest");
+			
+			testCodeTimerStop = true;
+			testCodeCounter = TDDTViewController.getBbyMinute();
+			startTestCodeTimer();
 		}
 	}
 	
+	
+	/**
+	 * startet einen visuell sichtbaren timer der von einer gegebenen anzahl an sekunden runterläuft
+	 * 
+	 */
+	private void startTestCodeTimer() { // babymode
+		testCodeTimerThread = new Thread(() -> {
+			while(testCodeTimerStop) {
+				testCodeTimer.setText(String.valueOf(testCodeCounter));
+				testCodeCounter--;
+				
+				if(testCodeCounter > farbe1) testCodeTimer.setStyle("-fx-fill: lime;"); // feature lässt farben grün gelb oder rot erscheinen jenach wie viel zeit noch da ist
+				else if(testCodeCounter > farbe2) testCodeTimer.setStyle("-fx-fill: gold;");
+				else if(testCodeCounter > farbe3) testCodeTimer.setStyle("-fx-fill: orange;");
+				else if(testCodeCounter > farbe4) testCodeTimer.setStyle("-fx-fill: orangered;");
+				else if(testCodeCounter >= 0) testCodeTimer.setStyle("-fx-fill: red;");
 
+				
+				for(int i = 40; i > 0; i--) { // feature lääst den counter verblassen
+					try {
+						Thread.sleep(25);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					testCodeTimer.setOpacity(i*0.025);
+				}
+				if(testCodeCounter == -1) {
+					testCodeCounter = TDDTViewController.getBbyMinute();
+					testCode.setText(testCodeSave);
+				}
+			}
+		});
+		testCodeTimerThread.start();
+	}
+	
+	/**
+	 * startet einen visuell sichtbaren timer der von einer gegebenen anzahl an sekunden runterläuft
+	 * 
+	 */
+	private void startSourceCodeTimer() {
+		sourceCodeTimerThread = new Thread(() -> {
+			while(sourceCodeTimerStop) {
+				sourceCodeTimer.setText(String.valueOf(sourceCodeCounter));
+				sourceCodeCounter--;
+				
+				if(sourceCodeCounter > farbe1) sourceCodeTimer.setStyle("-fx-fill: lime;"); // feature lässt farben grün gelb oder rot erscheinen jenach wie viel zeit noch da ist
+				else if(sourceCodeCounter > farbe2) sourceCodeTimer.setStyle("-fx-fill: gold;");
+				else if(sourceCodeCounter > farbe3) sourceCodeTimer.setStyle("-fx-fill: orange;");
+				else if(sourceCodeCounter > farbe4) sourceCodeTimer.setStyle("-fx-fill: orangered;");
+				else if(sourceCodeCounter >= 0) sourceCodeTimer.setStyle("-fx-fill: red;");
+
+				
+				for(int i = 40; i > 0; i--) { // feature lääst den counter verblassen
+					try {
+						Thread.sleep(25);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					sourceCodeTimer.setOpacity(i*0.025);
+				}
+				if(sourceCodeCounter == -1) {
+					sourceCodeCounter = TDDTViewController.getBbyMinute();
+					sourceCode.setText(sourceCodeSave);
+				}
+			}
+		});
+		sourceCodeTimerThread.start();
+	}
+	
+	/**
+	 * unterbricht die timer
+	 */
+	public static void interruptTimer() { //babymode
+	
+		testCodeTimerStop = false;
+		sourceCodeTimerStop = false;
+	}
+	
+	
+	//Helpbuttons
+	
+	/**
+	 * ruft {@link TDDTHelpButtons.howToWriteAMethod} auf wenn der button gedrückt worden ist
+	 */
+	@FXML
+	private void pressedHelpButtonMethod() {
+		TDDTHelpButtons.howToWriteAMethod();
+	}
+	
 	
 }
-	
-
-	
-

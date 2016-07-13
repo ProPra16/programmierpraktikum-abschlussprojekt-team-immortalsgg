@@ -24,11 +24,21 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <TextArea fx:id="sourceCode" layoutX="-29.0" layoutY="-42.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Text fx:id="sourceCodeTimer" opacity="0.25" strokeType="OUTSIDE" strokeWidth="0.0" text="60" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                     <font>
+                        <Font name="Serif Italic" size="100.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <TextArea fx:id="testCode" layoutX="14.0" layoutY="45.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Text fx:id="testCodeTimer" layoutX="-8.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="timer" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <font>
+                        <Font name="Serif Italic" size="100.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
         </items>
@@ -60,7 +70,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Hilfe">
             <items>
-              <MenuItem mnemonicParsing="false" text="HowTo(hilfekatalog)" />
+              <MenuItem mnemonicParsing="false" onAction="#pressedHelpButtonMethod" text="HowTo: Methode schreiben" />
             </items>
           </Menu>
         </menus>
