@@ -1,6 +1,8 @@
 package de.hhu.imtgg.controller;
 
 
+import java.util.ArrayList;
+
 import de.hhu.imtgg.TDDTMain;
 import de.hhu.imtgg.objects.TDDTest;
 import de.hhu.imtgg.objects.TDDUebungTests;
@@ -15,10 +17,14 @@ public class TDDTViewController {
 	
 	@FXML private MenuButton uebungsButton;
 	@FXML private Label darkModeStatus;
-	private String[] uebungsnamen = TDDUebungTests.uebungsNamen();
-	private TDDTest[] uebungtests = TDDUebungTests.getAllUebungen();
+	
+	private ArrayList<String> uebungsnamen = TDDUebungTests.getUebungsnamen();
+	private ArrayList<String> uebungsdescr = TDDUebungTests.getUebungsDescr();
+	private ArrayList<TDDTest> uebungtests = TDDUebungTests.getUebungsCode();
 	private static String sourceCodeClassName = "";
-	@FXML private Spinner BbyMinute;
+
+	@FXML private Spinner bbyStepsMinute;
+
 	private static int bbyMinutes = 1;
 	private static int trackingMinutes = 1;
 
@@ -28,18 +34,23 @@ public class TDDTViewController {
 	private static boolean tracking = false;
 	private boolean atdd = false;
 	
-	
+	/**
+	 * initialisiert dass hauptmenu layout mit wichtigen werten
+	 * die �bungen werden geladen und einstellungen konfiguriert(eingestellt)
+	 */
 	@FXML
 	private void initialize() { // haut alle uebungen aus dem ordner Uebungen in den Menubutton
-		int uebungsanzahl = uebungsnamen.length;
+
+		int uebungsanzahl = uebungsnamen.size();
 		babySteps = false; // reset
 		tracking = false;
+
 		setSpinnerConfig();
 		
 		for(int i = 0; i < uebungsanzahl; i++) {
 			MenuItem menuitem = new MenuItem();
-			String testcode = uebungtests[i].getTestCode();
-			String uebungsclassname = uebungsnamen[i];
+			String testcode = uebungtests.get(i).getTestCode();
+			String uebungsclassname = uebungsnamen.get(i);
 			menuitem.setText(uebungsclassname);
 			int currentuebung = i;
 			menuitem.setOnAction(e -> menuItemActions(testcode,getSourceCode(currentuebung),uebungsclassname));
@@ -47,27 +58,45 @@ public class TDDTViewController {
 		}	
 	}
 	
+	/**
+	 * setzt den spinner auf werte von 1 - 10 
+	 */
 	private void setSpinnerConfig() {
 		SpinnerValueFactory svf = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10);
-		BbyMinute.setValueFactory(svf);
-		BbyMinute.setOnMouseClicked(e -> getSpinnerValue());
+		bbyStepsMinute.setValueFactory(svf);
+		bbyStepsMinute.setOnMouseClicked(e -> getSpinnerValue());
 	}
 	
+	/**
+	 * gibt den wert von dem spinner zur�ck
+	 */
 	private void getSpinnerValue() {
-		String minutes = BbyMinute.getValue().toString();
+		String minutes = bbyStepsMinute.getValue().toString();
 		bbyMinutes = Integer.parseInt(minutes);
 	}
-
+	
+	/**
+	 * setzt den spinner auf einen default wert
+	 */
 	public static void setBbyMinuteDefault() { //  falls man zur�ck ins hauptmenu geht , der wert zur�ckgesetzt wird
 		bbyMinutes = 1;
 	}
-
+	
+	/**
+	 * hilfsfunktion
+	 * @return
+	 */
 	public static int getBbyMinute() {
 		return bbyMinutes*60;
 	}
-
+	
+	/**
+	 * erzeugt einen gestell f�r den sourcecode
+	 * @param i
+	 * @return einen String welches das ger�st f�+r den SourceCode beinhaltet
+	 */
 	private String getSourceCode(int i) { // kleines geruest fuer die ausgewaehlte uebung
-		return "public class " + uebungsnamen[i] +" {\n\n"
+		return uebungsdescr.get(i) + "\npublic class " + uebungsnamen.get(i) +" {\n\n"
 				+ "}";
 	}
 	
