@@ -27,7 +27,7 @@ public class TDDTMain extends Application {
 		TDDTMain.primarystage.setTitle("TDD Trainer by Team ImmortalsGG");
 		
 		initTDDTViewLayoutNormalMode();
-		primarystage.setOnCloseRequest(e -> TDDTrainerViewController.interruptTimer()); //babymode
+		primarystage.setOnCloseRequest(e -> TDDTrainerViewController.interruptTimer()); //babymode & tracking
 	}
 
 	public static void main(String[] args) {

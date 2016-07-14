@@ -1,12 +1,12 @@
 package de.hhu.imtgg.objects;
 
+import java.util.LinkedList;
 import java.util.Optional;
 
 import de.hhu.imtgg.TDDTMain;
 import de.hhu.imtgg.compiler.TDDCompiler;
 import de.hhu.imtgg.controller.TDDTDarkModeController;
 import de.hhu.imtgg.controller.TDDTViewController;
-import de.hhu.imtgg.controller.TDDTrainerViewController;
 import de.hhu.imtgg.controller.TDDTrainerViewController;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -15,7 +15,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 
 public class TDDAlert {
 	
@@ -23,6 +26,7 @@ public class TDDAlert {
 	private boolean test;
 	private boolean source;
 	private boolean refactor;
+	private LinkedList<TDDTuple> log;
 		
 	public TDDAlert(String modus,boolean test,boolean source,boolean refactor) {
 		this.message = modus;
@@ -33,6 +37,9 @@ public class TDDAlert {
 	
 	public TDDAlert(String message) {
 		this.message = message;
+	}
+	public TDDAlert(LinkedList<TDDTuple> log){
+		this.log = log;
 	}
 	
 	public TDDAlert() {
@@ -56,6 +63,7 @@ public class TDDAlert {
 			else TDDTMain.initTDDTViewLayoutNormalMode();
 			
 			TDDTViewController.setBbyMinuteDefault();
+			TDDTViewController.setTrackingMinuteDefault();
 		}
 		else if (result.get() == noButton) {
 			return;
@@ -141,7 +149,39 @@ public class TDDAlert {
 		TDDCompiler.resetFails();
 		alert.showAndWait();
 	}
-	
+
+	public void showTrackingData(){
+
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("TDD Trainer by Team ImmortalsGG");
+		alert.setHeaderText("click 'show details' for chart of Spent Time");
+		CategoryAxis tasks = new CategoryAxis();
+		NumberAxis time = new NumberAxis();
+		BarChart<String,Number> barChart = new BarChart<>(tasks,time);
+
+		if (log.size()==1){
+			barChart.setTitle("Tracking Information: One task so far");
+		}else {
+			barChart.setTitle("Tracking Information: " + log.size() + " tasks so far");
+		}
+
+		tasks.setLabel("Task");
+		time.setLabel("Time Spent");
+
+		XYChart.Series series1 = new XYChart.Series();
+		for(TDDTuple date : log){
+			series1.getData().add(new XYChart.Data(date.getTask(), date.getSeconds()));
+		}
+
+		barChart.getData().addAll(series1);
+		GridPane expContent = new GridPane();
+		expContent.setMaxWidth(Double.MAX_VALUE);
+		expContent.add(barChart,0,0);
+		alert.getDialogPane().setExpandableContent(expContent);
+
+		alert.showAndWait();
+	}
+
 	public void compileError(int klasse) {  // von http://code.makery.ch/blog/javafx-dialogs-official/
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("TDD Trainer by Team ImmortalsGG");
