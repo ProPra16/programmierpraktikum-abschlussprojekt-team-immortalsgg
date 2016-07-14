@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24724fea-a2c5-4dbb-9ec8-84258337481c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/objects/TDDTuple.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/objects/TrackingHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/TDDTMain.java" afterPath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/TDDTMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/controller/TDDTViewController.java" afterPath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/controller/TDDTViewController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/controller/TDDTrainerViewController.java" afterPath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/controller/TDDTrainerViewController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/layout/TDDTViewDarkMode.fxml" afterPath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/layout/TDDTViewDarkMode.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/layout/TDDTViewNormalMode.fxml" afterPath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/layout/TDDTViewNormalMode.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/layout/TDDTrainerViewNormalMode.fxml" afterPath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/layout/TDDTrainerViewNormalMode.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/objects/TDDAlert.java" afterPath="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/objects/TDDAlert.java" />
     </list>
     <ignored path="programmierpraktikum-absclussprojekt-team-immortalsgg.iws" />
@@ -47,14 +39,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TDDAlert.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TDDAlert.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/hhu/imtgg/objects/TDDAlert.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+            <state relative-caret-position="314">
+              <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#areUSureMessage#0;class#TDDAlert#0" expanded="false" />
                 <element signature="method#showTestResults#0;class#TDDAlert#0" expanded="false" />
               </folding>
             </state>
@@ -74,8 +65,8 @@
       <file leaf-file-name="TDDTrainerViewController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/hhu/imtgg/controller/TDDTrainerViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="178" column="5" selection-start-line="178" selection-start-column="5" selection-end-line="178" selection-end-column="5" />
+            <state relative-caret-position="171">
+              <caret line="360" column="37" selection-start-line="360" selection-start-column="37" selection-end-line="360" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5702#5703#0" expanded="true" />
@@ -87,15 +78,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TDDTViewController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TDDTViewController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/hhu/imtgg/controller/TDDTViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="306">
               <caret line="77" column="33" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
               <folding>
                 <element signature="method#initialize#0;class#TDDTViewController#0" expanded="false" />
                 <element signature="method#getSpinnerValue#0;class#TDDTViewController#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TDDTViewNormalMode.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/hhu/imtgg/layout/TDDTViewNormalMode.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="63" column="21" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TDDTrainerViewNormalMode.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/hhu/imtgg/layout/TDDTrainerViewNormalMode.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="58">
+              <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -453,11 +470,11 @@
         <option value="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/layout/TDDTrainerViewNormalMode.fxml" />
         <option value="$PROJECT_DIR$/build/classes/main/de/hhu/imtgg/layout/TDDTrainerViewNormalMode.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/objects/Tuple.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/objects/TDDAlert.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/objects/TrackingHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/objects/TDDTuple.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/controller/TDDTrainerViewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/controller/TDDTViewController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/hhu/imtgg/objects/TDDAlert.java" />
       </list>
     </option>
   </component>
@@ -610,6 +627,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="objects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="programmierpraktikum-absclussprojekt-team-immortalsgg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="programmierpraktikum-abschlussprojekt-team-immortalsgg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imtgg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -957,12 +1004,12 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1009,7 +1056,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#areUSureMessage#0;class#TDDAlert#0" expanded="false" />
             <element signature="method#showTestResults#0;class#TDDAlert#0" expanded="false" />
           </folding>
         </state>
@@ -1054,7 +1100,6 @@
           <caret line="80" column="33" selection-start-line="80" selection-start-column="33" selection-end-line="80" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#areUSureMessage#0;class#TDDAlert#0" expanded="false" />
             <element signature="method#showTestResults#0;class#TDDAlert#0" expanded="false" />
           </folding>
         </state>
@@ -1206,17 +1251,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/hhu/imtgg/layout/TDDTViewNormalMode.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="63" column="21" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.hhu.stups/virtual-kata-lib/1.0.1/cb50a105bab67e9e31758e88525e4ab2d1991149/virtual-kata-lib-1.0.1-sources.jar!/vk/core/api/JavaStringCompiler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
@@ -1264,17 +1298,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
           <caret line="53" column="103" selection-start-line="53" selection-start-column="103" selection-end-line="53" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/hhu/imtgg/layout/TDDTrainerViewNormalMode.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="81" column="89" selection-start-line="81" selection-start-column="89" selection-end-line="81" selection-end-column="89" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1344,18 +1367,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/hhu/imtgg/objects/TDDAlert.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#areUSureMessage#0;class#TDDAlert#0" expanded="false" />
-            <element signature="method#showTestResults#0;class#TDDAlert#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_91/src.zip!/java/time/LocalDateTime.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1709">
@@ -1388,10 +1399,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/hhu/imtgg/layout/TDDTViewNormalMode.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="63" column="21" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/hhu/imtgg/layout/TDDTrainerViewNormalMode.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/hhu/imtgg/controller/TDDTViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="77" column="33" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
+          <folding>
+            <element signature="method#initialize#0;class#TDDTViewController#0" expanded="false" />
+            <element signature="method#getSpinnerValue#0;class#TDDTViewController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/hhu/imtgg/controller/TDDTrainerViewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="178" column="5" selection-start-line="178" selection-start-column="5" selection-end-line="178" selection-end-column="5" />
+        <state relative-caret-position="171">
+          <caret line="360" column="37" selection-start-line="360" selection-start-column="37" selection-end-line="360" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5702#5703#0" expanded="true" />
@@ -1402,13 +1446,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/hhu/imtgg/controller/TDDTViewController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/hhu/imtgg/objects/TDDAlert.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="77" column="33" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
+        <state relative-caret-position="314">
+          <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
           <folding>
-            <element signature="method#initialize#0;class#TDDTViewController#0" expanded="false" />
-            <element signature="method#getSpinnerValue#0;class#TDDTViewController#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#showTestResults#0;class#TDDAlert#0" expanded="false" />
           </folding>
         </state>
       </provider>

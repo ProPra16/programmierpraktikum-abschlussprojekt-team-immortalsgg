@@ -63,7 +63,6 @@ public class TDDAlert {
 			else TDDTMain.initTDDTViewLayoutNormalMode();
 			
 			TDDTViewController.setBbyMinuteDefault();
-			TDDTViewController.setTrackingMinuteDefault();
 		}
 		else if (result.get() == noButton) {
 			return;
