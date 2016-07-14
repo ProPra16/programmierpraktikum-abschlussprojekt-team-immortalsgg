@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 
@@ -23,23 +22,29 @@ public class TDDTViewController {
 	private ArrayList<String> uebungsdescr = TDDUebungTests.getUebungsDescr();
 	private ArrayList<TDDTest> uebungtests = TDDUebungTests.getUebungsCode();
 	private static String sourceCodeClassName = "";
-	
+
 	@FXML private Spinner bbyStepsMinute;
+
 	private static int bbyMinutes = 1;
+	private static int trackingMinutes = 1;
+
 	private static String testCodevorlage;
 	
 	private static boolean babySteps = false;
-	private boolean tracking = false;
+	private static boolean tracking = false;
 	private boolean atdd = false;
 	
 	/**
 	 * initialisiert dass hauptmenu layout mit wichtigen werten
-	 * die übungen werden geladen und einstellungen konfiguriert(eingestellt)
+	 * die ï¿½bungen werden geladen und einstellungen konfiguriert(eingestellt)
 	 */
 	@FXML
 	private void initialize() { // haut alle uebungen aus dem ordner Uebungen in den Menubutton
+
 		int uebungsanzahl = uebungsnamen.size();
-		babySteps = false; // reset 
+		babySteps = false; // reset
+		tracking = false;
+
 		setSpinnerConfig();
 		
 		for(int i = 0; i < uebungsanzahl; i++) {
@@ -63,7 +68,7 @@ public class TDDTViewController {
 	}
 	
 	/**
-	 * gibt den wert von dem spinner zurück
+	 * gibt den wert von dem spinner zurï¿½ck
 	 */
 	private void getSpinnerValue() {
 		String minutes = bbyStepsMinute.getValue().toString();
@@ -73,7 +78,7 @@ public class TDDTViewController {
 	/**
 	 * setzt den spinner auf einen default wert
 	 */
-	public static void setBbyMinuteDefault() { //  falls man zurück ins hauptmenu geht , der wert zurückgesetzt wird
+	public static void setBbyMinuteDefault() { //  falls man zurï¿½ck ins hauptmenu geht , der wert zurï¿½ckgesetzt wird
 		bbyMinutes = 1;
 	}
 	
@@ -86,9 +91,9 @@ public class TDDTViewController {
 	}
 	
 	/**
-	 * erzeugt einen gestell für den sourcecode
+	 * erzeugt einen gestell fï¿½r den sourcecode
 	 * @param i
-	 * @return einen String welches das gerüst fü+r den SourceCode beinhaltet
+	 * @return einen String welches das gerï¿½st fï¿½+r den SourceCode beinhaltet
 	 */
 	private String getSourceCode(int i) { // kleines geruest fuer die ausgewaehlte uebung
 		return uebungsdescr.get(i) + "\npublic class " + uebungsnamen.get(i) +" {\n\n"
@@ -98,7 +103,11 @@ public class TDDTViewController {
 	public static boolean getBabyStepsMode() {
 		return babySteps;
 	}
-	
+
+	public static boolean getTrackingMode() {
+		return tracking;
+	}
+
 	private void menuItemActions(String testcode , String sourcecode,String uebungsnamen) {	
 		testCodevorlage = testcode;
 		TDDTMain.initTDDTrainerViewNormalMode(testcode,sourcecode);	

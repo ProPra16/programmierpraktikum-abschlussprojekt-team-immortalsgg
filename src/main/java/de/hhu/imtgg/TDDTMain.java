@@ -31,8 +31,9 @@ public class TDDTMain extends Application {
 		TDDTMain.primarystage.setTitle("TDD Trainer by Team ImmortalsGG");
 		
 		initTDDTViewLayoutNormalMode();
+
 		primarystage.setOnCloseRequest(e -> { TDDTrainerViewController.interruptTimer();
-												TDDTHelpButtons.closeAllHelpWindows();}); 
+												TDDTHelpButtons.closeAllHelpWindows();});
 	}
 
 	public static void main(String[] args) {
@@ -40,7 +41,7 @@ public class TDDTMain extends Application {
 	}
 	/**
 	 * Laedt eine FXML auf die stage , welche den DarkMode beinhaltet
-	 * Layout = {@link initTDDTViewLayNormalMode} , nur in Schwarz statt weiß
+	 * Layout = {@link initTDDTViewLayoutNormalMode} , nur in Schwarz statt weiï¿½
 	 */
 	public static void initTDDTViewLayoutDarkMode() {			
 		 try {
@@ -55,7 +56,7 @@ public class TDDTMain extends Application {
 		}
 	}
 	/**
-	 * lädt eine FXML auf die stage , welche ein layout für das Start menue beinhaltet
+	 * lï¿½dt eine FXML auf die stage , welche ein layout fï¿½r das Start menue beinhaltet
 	 * 
 	 */
 	public static void initTDDTViewLayoutNormalMode() {			// laedt layout fuer startbild aus FXML -> siehe TDDTView.fmxl
@@ -73,7 +74,7 @@ public class TDDTMain extends Application {
 	
 	/**
 	 * laedt eine FXML auf die stage , welche nach auswahl einer Uebung erscheint
-	 * layout beeinhaltet save buttons und textareas und eine menübar mit verschiedenen optionen 
+	 * layout beeinhaltet save buttons und textareas und eine menï¿½bar mit verschiedenen optionen 
 	 */
 	public static void initTDDTrainerViewNormalMode(String testcode,String sourcecode) { //komisch gemacht doch die textarea laesst sich veraendern beim start
 		try {
