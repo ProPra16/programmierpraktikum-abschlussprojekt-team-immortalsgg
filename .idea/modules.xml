@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/programmierpraktikum-absclussprojekt-team-immortalsgg.iml" filepath="$PROJECT_DIR$/.idea/modules/programmierpraktikum-absclussprojekt-team-immortalsgg.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/programmierpraktikum-absclussprojekt-team-immortalsgg_main.iml" filepath="$PROJECT_DIR$/.idea/modules/programmierpraktikum-absclussprojekt-team-immortalsgg_main.iml" group="programmierpraktikum-absclussprojekt-team-immortalsgg" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/programmierpraktikum-absclussprojekt-team-immortalsgg_test.iml" filepath="$PROJECT_DIR$/.idea/modules/programmierpraktikum-absclussprojekt-team-immortalsgg_test.iml" group="programmierpraktikum-absclussprojekt-team-immortalsgg" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/src/main/main.resources.iml" filepath="$PROJECT_DIR$/src/main/main.resources.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/programmierpraktikum-absclussprojekt-team-immortalsgg.iml" filepath="$PROJECT_DIR$/.idea/modules/programmierpraktikum-absclussprojekt-team-immortalsgg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/programmierpraktikum-absclussprojekt-team-immortalsgg_main.iml" filepath="$PROJECT_DIR$/.idea/modules/programmierpraktikum-absclussprojekt-team-immortalsgg_main.iml" group="programmierpraktikum-absclussprojekt-team-immortalsgg" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/programmierpraktikum-absclussprojekt-team-immortalsgg_test.iml" filepath="$PROJECT_DIR$/.idea/modules/programmierpraktikum-absclussprojekt-team-immortalsgg_test.iml" group="programmierpraktikum-absclussprojekt-team-immortalsgg" />
+      <module fileurl="file://$PROJECT_DIR$/src/main/resources.iml" filepath="$PROJECT_DIR$/src/main/resources.iml" />
+>>>>>>> efc425834eef5f5234b7d04d967a24ebead13cfd
     </modules>
   </component>
 </project>

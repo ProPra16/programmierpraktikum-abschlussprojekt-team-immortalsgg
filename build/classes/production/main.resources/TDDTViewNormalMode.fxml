@@ -52,7 +52,7 @@
                   <Font name="Serif Italic" size="13.0" />
                </font>
             </RadioButton>
-            <Label layoutX="97.0" layoutY="359.0" text="On" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="85.0">
+            <Label layoutX="97.0" layoutY="359.0" text="Off" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="85.0">
                <font>
                   <Font name="Serif Italic" size="11.0" />
                </font>

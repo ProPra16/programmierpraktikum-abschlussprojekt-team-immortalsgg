@@ -39,7 +39,7 @@ public class TDDUebungTests {
 	}
 	
 	/**
-	 * filtert die übungsbeschreibung aus einer datei
+	 * filtert die ï¿½bungsbeschreibung aus einer datei
 	 * @return speichert die beschreibungen in einer arraylist
 	 */
 	public static ArrayList<String> getUebungsDescr() {
@@ -68,7 +68,7 @@ public class TDDUebungTests {
 	}
 	
 	/**
-	 * filtert die übungsnamen aus einer datei
+	 * filtert die ï¿½bungsnamen aus einer datei
 	 * @return speichert die namen in einer arraylist
 	 */
 	public static ArrayList<String> getUebungsnamen() { // filtert Uebungsnamen heraus

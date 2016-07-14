@@ -84,6 +84,14 @@
                   <Font name="Serif Italic" size="12.0" />
                </font>
             </Button>
+<<<<<<< HEAD
+=======
+             <Button fx:id="dataButton" layoutY="204.0" mnemonicParsing="false" onAction="#dataButtonPressed" text="Data" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
+                 <font>
+                     <Font name="Serif Italic" size="12.0" />
+                 </font>
+             </Button>
+>>>>>>> efc425834eef5f5234b7d04d967a24ebead13cfd
          </children>
       </AnchorPane>
    </right>

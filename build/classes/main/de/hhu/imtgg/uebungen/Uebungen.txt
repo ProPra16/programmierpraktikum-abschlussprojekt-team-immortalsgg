@@ -1,0 +1,39 @@
+LeapYearCheck
+Beschreibung
+/* In dieser Übung sollst du ein
+Programm schreiben, welchesherausfindet 
+ob ein gegebenes Jahr ein Schaltjahr ist
+z.b checkLeapYear(1999); , das sollte dann
+entweder true oder false zurückgeben. */
+Code
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class LeapYearCheckTest {
+	
+	@Test
+	public void testSmth() {
+	
+	}
+	
+}
+next
+RomanNumberConverter
+Beschreibung
+/* In dieser Übung sollst du ein Programm
+schreiben, welcheseine Dezimalzahl
+z.b 2 in eine Römische Zahl konvertiert, 
+in diesem Fall 2 -> II */
+Code
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class RomanNumberConverterTest {
+
+	@Test
+	public void testSmth() {
+			
+	}
+}
+end
+		

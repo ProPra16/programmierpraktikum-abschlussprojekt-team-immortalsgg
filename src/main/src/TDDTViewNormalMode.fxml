@@ -52,7 +52,7 @@
                   <Font name="Serif Italic" size="13.0" />
                </font>
             </RadioButton>
-            <Label layoutX="97.0" layoutY="359.0" text="On" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="85.0">
+            <Label layoutX="97.0" layoutY="359.0" text="Off" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="85.0">
                <font>
                   <Font name="Serif Italic" size="11.0" />
                </font>
@@ -62,7 +62,7 @@
                   <Font name="Serif Italic" size="11.0" />
                </font>
             </Button>
-            <Spinner fx:id="BbyMinute" layoutX="353.0" layoutY="196.0" prefHeight="11.0" prefWidth="52.0" scaleX="0.7" scaleY="0.7" AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="314.0" />
+            <Spinner fx:id="bbyStepsMinute" layoutX="353.0" layoutY="196.0" prefHeight="11.0" prefWidth="52.0" scaleX="0.7" scaleY="0.7" AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="314.0" />
          </children>
       </AnchorPane>
    </center>
