@@ -62,11 +62,7 @@
                   <Font name="Serif Italic" size="11.0" />
                </font>
             </Button>
-<<<<<<< HEAD
-            <Spinner fx:id="bbyStepsMinute" layoutX="353.0" layoutY="196.0" prefHeight="11.0" prefWidth="52.0" scaleX="0.7" scaleY="0.7" AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="314.0" />
-=======
             <Spinner fx:id="BbyMinute" layoutX="353.0" layoutY="196.0" prefHeight="11.0" prefWidth="52.0" scaleX="0.7" scaleY="0.7" AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="314.0" />
->>>>>>> efc425834eef5f5234b7d04d967a24ebead13cfd
          </children>
       </AnchorPane>
    </center>

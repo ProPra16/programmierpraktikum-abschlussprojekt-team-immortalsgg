@@ -84,7 +84,7 @@
                   <Font name="Serif Italic" size="12.0" />
                </font>
             </Button>
-             <Button fx:id="dataButton" layoutY="204.0" mnemonicParsing="false" onAction="#dataButtonPressed" text="Data" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
+             <Button fx:id="showTrackingButton" layoutY="204.0" mnemonicParsing="false" onAction="#dataButtonPressed" text="Data" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
                  <font>
                      <Font name="Serif Italic" size="12.0" />
                  </font>

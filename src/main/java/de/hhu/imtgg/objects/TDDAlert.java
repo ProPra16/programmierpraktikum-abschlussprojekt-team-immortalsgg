@@ -181,19 +181,19 @@ public class TDDAlert {
 
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("TDD Trainer by Team ImmortalsGG");
-		alert.setHeaderText("click 'show details' for chart of Spent Time");
+		alert.setHeaderText("Klick 'show details' fuer einen Graph deiner Aktivitaet");
 		CategoryAxis tasks = new CategoryAxis();
 		NumberAxis time = new NumberAxis();
 		BarChart<String,Number> barChart = new BarChart<>(tasks,time);
 
 		if (log.size()==1){
-			barChart.setTitle("Tracking Information: One task so far");
+			barChart.setTitle("Tracking Information: Ein Schritt bis jetzt");
 		}else {
-			barChart.setTitle("Tracking Information: " + log.size() + " tasks so far");
+			barChart.setTitle("Tracking Information: " + log.size() + " Schritte bis jetzt");
 		}
 
-		tasks.setLabel("Task");
-		time.setLabel("Time Spent");
+		tasks.setLabel("Schritte");
+		time.setLabel("verbrachte Zeit");
 
 		XYChart.Series series1 = new XYChart.Series();
 		for(TDDTuple date : log){
@@ -201,6 +201,7 @@ public class TDDAlert {
 		}
 
 		barChart.getData().addAll(series1);
+		barChart.setPrefWidth(1000);
 		GridPane expContent = new GridPane();
 		expContent.setMaxWidth(Double.MAX_VALUE);
 		expContent.add(barChart,0,0);

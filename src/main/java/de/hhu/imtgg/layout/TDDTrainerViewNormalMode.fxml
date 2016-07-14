@@ -47,7 +47,7 @@
    <left>
       <AnchorPane prefHeight="383.0" prefWidth="32.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="leftSaveButton" layoutX="10.0" layoutY="171.0" mnemonicParsing="false" onAction="#sourceCodeSaveButtonPressed" text="Save" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
+            <Button fx:id="leftSaveButton" layoutX="10.0" layoutY="171.0" mnemonicParsing="false" onAction="#sourceCodeSaveButtonPressed" text="Speichern" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="3.0">
                <font>
                   <Font name="Serif Italic" size="12.0" />
                </font></Button>
@@ -79,12 +79,12 @@
    <right>
       <AnchorPane prefHeight="361.0" prefWidth="12.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="rightSaveButton" mnemonicParsing="false" onAction="#testCodeSaveButtonPressed" text="Save" AnchorPane.topAnchor="3.0">
+            <Button fx:id="rightSaveButton" mnemonicParsing="false" onAction="#testCodeSaveButtonPressed" text="Speichern" AnchorPane.topAnchor="3.0">
                <font>
                   <Font name="Serif Italic" size="12.0" />
                </font>
             </Button>
-             <Button fx:id="dataButton" layoutY="204.0" mnemonicParsing="false" onAction="#dataButtonPressed" text="Data" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
+             <Button fx:id="showTrackingButton" layoutY="204.0" mnemonicParsing="false" onAction="#dataButtonPressed" text="Tracking" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
                  <font>
                      <Font name="Serif Italic" size="12.0" />
                  </font>
