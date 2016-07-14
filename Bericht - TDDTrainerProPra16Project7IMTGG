@@ -1,0 +1,39 @@
+Bericht :
+
+Vor weg - wir haben ein javadoc hinzugefügt , um dies aufzurufen musst du in dem ordner doc die index.html öffnen.
+________________________________
+
+Wie ist das Programm aufgebaut:
+Das Programm wird gestartet und es öffnet sich ein Menü(Hauptmenü). In diesem Menü kann man durch den 'Button' Übungen auswählen, welche Übung man gerne hätte. Unter diesem 'Button' sind weitere Einstellungen, welche jeweils durch einen 'RadioButton' anklickbar sind. Die Funktionen der Einstellungen sind im Nutzerhandbuch verzeichnet. Unten Links ist noch ein weiterer 'Button', welcher einen DarkMode für das Hauptmenü aktiviert. Das Layout für das Hauptmenü wurde mit einem Scenebuilder erstellt.Die Hintergrundfarbe ist weiß, die Schriftart Serif - kurisv und ein helleres Schwarz, damit es für die Augen freundlicher wirkt. Das Layout ist eine einfache AnchorPane in welcher, die Objekte gut verteilt sind.
+Nun zu den Übungen, diese werden durch initialisieren der Hauptmenü´s direkt durch eine Datei(uebungen.txt) hineingeladen.Dies passiert in dem zum Layout zugehörigen Controller. Wählt man nun eine Übung aus so wird ein neues Layout auf die Stage geladen. Das neue Layout wurde ebenfalls mit dem Scenebuilder erschaffen. Es beinhaltet eine BorderPane,in der Top eine 'Menubar', in der Bottom ein 'Text' für die Statusanzeige, in der Left 2 'Button' für Speichern und Refactorn,in der Right 2 'Button' für Speichern oder um Tracking aufzurufen(TrackingButton nur verfügbar wenn Tracking in den Einstellungen ausgewählt ist),im Center ist eine Splitpane mit 2 'TextArea' für den SourceCode und den TestCode,ein Divider ist durch die Splitpane implementiert und kann somit die größe der Textarea verkleinern oder vergrößern.In der Top ist eine MenuBar, diese beinhaltet natürlich ein paar Optionen, nämlich -> "Zurück ins Hauptmenü" , "Zurück in den TestModus"(falls man einen doofen Test geschrieben hat) und ein Hilfsfenster wie man eine methode schreibt. 
+In diesem Layout, wo wir uns gerade befinden findet das ganze Test driven development statt. 
+Nach jedem speichern, wird angezeigt wo Probleme sind und ob der Modus gewechselt wird. Die TextAreas sind farblich umrandet um besser klar zumachen, wo man schreiben kann. Ebenso die Speichern Button sind farblich umrandet um Verwirrung zu verhindern.
+Wie wird klargemacht, dass der Modus gewechselt wurde? Nach jedem speichern kommt ein Alert von Javafx mit der passenden Nachricht in welchem Case man sich befindet.
+So ist unser Programm, unser TDDTrainer aufgebaut.
+________________________________
+
+Klassen:
+Es startet alles in der Main. dort wird die erste FXML datei geladen und dazu auch der TDDTViewController, den man im aktuellen layout(Hauptmenü) benutzt. Also befinden wir uns nun im TDDTViewController.Dieser hat eine @FXML initialize funktion, in dem er(die Klasse) alle nötigen daten für den weiteren Verlauf bereitstellt, wie 'welcher Modus aktiv ist' 'welche Übungen geladen werden.Die Übungen werden von der Klasse im Ordner Objects TDDUebungTests geladen. Diese Klasse nimmt sich der der Textdatei Uebungen im Ordner uebungen , die Übunge, welche gespeichert sind nach dem Schema :
+<Name der Übung>
+Codewort 'Beschreibung' (für das herausfiltern siehe TDDUebungTests klasse)
+<Beschreibung der Übung>
+Codewort 'Code'
+<Testcode>
+Codewort 'next' oder 'end' (ob noch ein test folgt oder die datei hier endet) 
+Die Übungen werden in einem MenuItem geladen und mit einer SetOnAction variante versehen.
+Das Item ist nun mit SourceCode und TestCode ausgestattet und bereit dafür ausgewählt zu werden.
+Wird das Item nun ausgewählt so wird die nächste FXML Datei mit dem zugehörigen text geladen.
+Das heißt man hat immer wenn man eine Übung auswählt ein Gerüst.
+Neben dieser Funktion im TDDTViewController hat er(die Klasse) auch noch weitere Funktionen, welche kleiner ausfallen.
+Nämlich die weitergabe der Einstellungen an den nächsten Controller um dort die richtige TDD Einstellung auszuführen.
+Nun widmen wir uns dem TDDTrainerViewController, wo die ganze Magie umgesetzt wird.
+In diesem Controller befinden sich die ganzen Buttons und JavaFX Elemente und mit diesem wird hier auch gearbeitet.
+Die speicher Buttons, auch der Refactor Button haben OnMouseClick Funktionen und steuern das tdd verfahren, mithilfe der TDDAlerts und des TDDCompilers.Widmen wir uns zunächst dem Compiler.Hierzu empfiehlt es sich in die JavaDoc zuschauen. Die klasse TDDCompiler beinhaltet die ganze Logik der Programms und ist mit Hilfe der Kata-lib von Jens Bendisposto erst möglich. Die klasse bekommt bei jedem Speichern 2 Klassen, compiliert diese und prüft ob Fehler da sind ,  wie viele tests fehlschlagen und gibt die Fehlermeldungen. Mit der Klasse TDDAlert werden diese Daten dem User quasi übergeben, wenn compilierfehler sind, so stehen sie im Alert unter details.Die Alerts steuern für den Testcode und den sourcecode auch gleich mit welcher aktiv ist. Nun die Frage woher weiß man welcher aktiv ist? Gute Frage! Es gibt 3 Booleans, jeweils für den testmodus, den sourcecodemodus und den refactor modus. Durch diese Booleans kann man ziemlich einfach das Verfahren steuern und man kommt in keine Funktion rein in die man nicht rein soll.
+Die Tests, testen die Logik, also den TDDCompiler, alles andere sind Optische JavaFX Elemente un wurden ausgiebig von uns getestet!
+Es kann daher zu problemen bei den Babysteps kommen, wenn die Threads sich mal verheddern, das kommt alle 100x mal vor oder garnicht, je nachdem wie die Threads drauf sind.
+Erweiterungen:
+Die Babysteps sind durch 2 neue Threads implementiert im TDDTrainerViewController und werden dort aktiviert und deaktiviert, durch Phasen wechsel.
+Tracking ist durch ein TrackinHelper und ein TDDTupel ausgestattet -> der Trackinghelper funktioniert mit hilfe von LocalDatetime und startet und stop je nach phase und gibt die Sekundenzahl durch die Differenz wieder an. Durch die Tupel kann man ein schönes BarChart erzeugen wenn man den Tracking Button drückt(weitere Infos bitte email an Carlo Schakow)
+ATDD <Platzhalter für Helge Hellbach> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Das war die Implementierung für die Klassen, wenn du fragen hast oder den Code nicht verstehst, schau in das JavaDoc oder eröffne ein Issue oder schreib uns einfach eine Email.
