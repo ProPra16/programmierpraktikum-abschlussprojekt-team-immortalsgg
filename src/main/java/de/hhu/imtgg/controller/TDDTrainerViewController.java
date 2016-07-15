@@ -30,6 +30,7 @@ public class TDDTrainerViewController {
 	@FXML private Text sourceCodeTimer;
 
 	@FXML private Button showTrackingButton;
+	@FXML private Button showATDDButton;
 
 	private static boolean sourceCodeTimerStop = false;	// an / aus f�r timer
 	private static boolean testCodeTimerStop = true; 
@@ -129,6 +130,10 @@ public class TDDTrainerViewController {
 		if(!TDDTViewController.getTrackingMode()) {
 			showTrackingButton.setVisible(false);
 			showTrackingButton.setDisable(true);
+		}
+		if(!TDDTViewController.getATDDMode()) {
+			showATDDButton.setVisible(false);
+			showATDDButton.setDisable(true);
 		}
 	}
 	

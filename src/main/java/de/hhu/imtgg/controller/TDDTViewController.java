@@ -32,7 +32,7 @@ public class TDDTViewController {
 	
 	private static boolean babySteps = false;
 	private static boolean tracking = false;
-	private boolean atdd = false;
+	private static boolean atdd = false;
 	
 	/**
 	 * initialisiert dass hauptmenu layout mit wichtigen werten
@@ -44,6 +44,7 @@ public class TDDTViewController {
 		int uebungsanzahl = uebungsnamen.size();
 		babySteps = false; // reset
 		tracking = false;
+		atdd = false;
 
 		setSpinnerConfig();
 		
@@ -106,6 +107,10 @@ public class TDDTViewController {
 
 	public static boolean getTrackingMode() {
 		return tracking;
+	}
+	
+	public static boolean getATDDMode() {
+		return atdd;
 	}
 
 	private void menuItemActions(String testcode , String sourcecode,String uebungsnamen) {	
