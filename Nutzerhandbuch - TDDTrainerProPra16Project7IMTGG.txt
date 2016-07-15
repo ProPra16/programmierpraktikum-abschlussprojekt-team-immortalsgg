@@ -19,9 +19,11 @@ Codewort 'Beschreibung' (für das herausfiltern siehe TDDUebungTests klasse)
 <Beschreibung der Übung>
 Codewort 'Code'
 <Testcode>
+Codewort 'Akzeptanzcode'
+<Akzeptanzcode>
 Codewort 'next' oder 'end' (ob noch ein test folgt oder die datei hier endet) 
 Die Übungen werden in einem MenuItem geladen und mit einer SetOnAction variante versehen.
-Das Item ist nun mit SourceCode und TestCode ausgestattet und bereit dafür ausgewählt zu werden.
+Das Item ist nun mit SourceCode, TestCode und Akzeptanzcode ausgestattet und bereit dafür ausgewählt zu werden.
 Wird das Item nun ausgewählt so wird die nächste FXML Datei mit dem zugehörigen text geladen.
 Das heißt man hat immer wenn man eine Übung auswählt ein Gerüst.
 Neben dieser Funktion im TDDTViewController hat er(die Klasse) auch noch weitere Funktionen, welche kleiner ausfallen.
@@ -34,6 +36,6 @@ Es kann daher zu problemen bei den Babysteps kommen, wenn die Threads sich mal v
 Erweiterungen:
 Die Babysteps sind durch 2 neue Threads implementiert im TDDTrainerViewController und werden dort aktiviert und deaktiviert, durch Phasen wechsel.
 Tracking ist durch ein TrackinHelper und ein TDDTupel ausgestattet -> der Trackinghelper funktioniert mit hilfe von LocalDatetime und startet und stop je nach phase und gibt die Sekundenzahl durch die Differenz wieder an. Durch die Tupel kann man ein schönes BarChart erzeugen wenn man den Tracking Button drückt(weitere Infos bitte email an Carlo Schakow)
-ATDD <Platzhalter für Helge Hellbach> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+ATDD gibt in einem weiteren, nicht in Echtzeit editierbaren, Dialog den Code der Akzeptanztests der jeweiligen Aufgabe wieder. Dieser Code muss vor Bearbeiten der Aufgabe in der Textdatei Uebungen entsprechend eingepflegt werden. Akzeptanztests decken die gesamte Funktionalität der Aufgabe ab und dienen somit dazu sicherzustellen, dass zumindest alle Funktionalität implementiert wurde. Durch Druck auf den ACC-Test Button wird, anders als beim normalen Testen, der Source- und Akzeptanzcode kompiliert und die Tests durchlaufen. Sind alle Tests erfolgreich, ist die Aufgabe komplett bearbeitet worden; wenn nicht, muss der Sourcecode noch verbessert werden!
 
 Das war die Implementierung für die Klassen, wenn du fragen hast oder den Code nicht verstehst, schau in das JavaDoc oder eröffne ein Issue oder schreib uns einfach eine Email.
