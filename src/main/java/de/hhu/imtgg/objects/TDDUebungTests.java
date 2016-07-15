@@ -25,7 +25,7 @@ public class TDDUebungTests {
 			while(!check.equals("end")) {
 				check = buffR.readLine();
 				if(check.equals("Code"))  { code = true; check = buffR.readLine(); }
-				if(check.equals("next") || check.equals("end")) { code = false; uebungsCode.add(new TDDTest(testcode)); testcode = "";}
+				if(check.equals("Akzeptanzcode") || check.equals("next")) { code = false; uebungsCode.add(new TDDTest(testcode)); testcode = "";}
 				if(code) {
 					testcode = testcode + check + "\n";
 				}
@@ -36,6 +36,35 @@ public class TDDUebungTests {
 			e.printStackTrace();
 		}
 		return uebungsCode;
+	}
+	
+	/**
+	 * filtert den akzeptanzcode aus einer datei 
+	 * @return speichert die codes in einer arraylist
+	 */
+
+	public static ArrayList<TDDTest> getAkzeptanzCode() {
+		ArrayList<TDDTest> akzeptanzCode = new ArrayList<TDDTest>();
+		try {
+			FileReader fileR = new FileReader("./src/main/java/de/hhu/imtgg/uebungen/Uebungen.txt");
+			BufferedReader buffR = new BufferedReader(fileR);
+			String check = buffR.readLine();
+			String testcode = "";
+			boolean code = false;
+			while(!check.equals("end")) {
+				check = buffR.readLine();
+				if(check.equals("Akzeptanzcode"))  { code = true; check = buffR.readLine(); }
+				if(check.equals("next") || check.equals("end")) { code = false; akzeptanzCode.add(new TDDTest(testcode)); testcode = "";}
+				if(code) {
+					testcode = testcode + check + "\n";
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return akzeptanzCode;
 	}
 	
 	/**
@@ -95,5 +124,7 @@ public class TDDUebungTests {
 		return uebungsnamen;
 		
 	}
+	
+	
 		
 }

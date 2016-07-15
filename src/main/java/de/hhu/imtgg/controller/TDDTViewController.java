@@ -21,6 +21,7 @@ public class TDDTViewController {
 	private ArrayList<String> uebungsnamen = TDDUebungTests.getUebungsnamen();
 	private ArrayList<String> uebungsdescr = TDDUebungTests.getUebungsDescr();
 	private ArrayList<TDDTest> uebungtests = TDDUebungTests.getUebungsCode();
+	private ArrayList<TDDTest> akzeptanztests = TDDUebungTests.getAkzeptanzCode();
 	private static String sourceCodeClassName = "";
 
 	@FXML private Spinner bbyStepsMinute;
@@ -51,10 +52,11 @@ public class TDDTViewController {
 		for(int i = 0; i < uebungsanzahl; i++) {
 			MenuItem menuitem = new MenuItem();
 			String testcode = uebungtests.get(i).getTestCode();
+			String akzeptanzcode = akzeptanztests.get(i).getTestCode();
 			String uebungsclassname = uebungsnamen.get(i);
 			menuitem.setText(uebungsclassname);
 			int currentuebung = i;
-			menuitem.setOnAction(e -> menuItemActions(testcode,getSourceCode(currentuebung),uebungsclassname));
+			menuitem.setOnAction(e -> menuItemActions(testcode,getSourceCode(currentuebung),uebungsclassname,akzeptanzcode));
 			uebungsButton.getItems().add(menuitem);
 		}	
 	}
@@ -113,9 +115,9 @@ public class TDDTViewController {
 		return atdd;
 	}
 
-	private void menuItemActions(String testcode , String sourcecode,String uebungsnamen) {	
+	private void menuItemActions(String testcode , String sourcecode,String uebungsnamen,String akzeptanzcode) {	
 		testCodevorlage = testcode;
-		TDDTMain.initTDDTrainerViewNormalMode(testcode,sourcecode);	
+		TDDTMain.initTDDTrainerViewNormalMode(testcode,sourcecode,akzeptanzcode);	
 		sourceCodeClassName =  uebungsnamen;
 	}
 	

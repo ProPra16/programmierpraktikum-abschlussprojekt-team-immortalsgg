@@ -5,6 +5,7 @@ import java.net.URL;
 
 import de.hhu.imtgg.controller.TDDTDarkModeController;
 import de.hhu.imtgg.controller.TDDTHelpButtons;
+import de.hhu.imtgg.controller.TDDTViewController;
 import de.hhu.imtgg.controller.TDDTrainerViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class TDDTMain extends Application {
@@ -76,7 +80,7 @@ public class TDDTMain extends Application {
 	 * laedt eine FXML auf die stage , welche nach auswahl einer Uebung erscheint
 	 * layout beeinhaltet save buttons und textareas und eine men�bar mit verschiedenen optionen 
 	 */
-	public static void initTDDTrainerViewNormalMode(String testcode,String sourcecode) { //komisch gemacht doch die textarea laesst sich veraendern beim start
+	public static void initTDDTrainerViewNormalMode(String testcode,String sourcecode,String akzeptanzcode) { //komisch gemacht doch die textarea laesst sich veraendern beim start
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(TDDTMain.class.getResource("layout/TDDTrainerViewNormalMode.fxml"));
@@ -86,17 +90,30 @@ public class TDDTMain extends Application {
 			AnchorPane anchorpanewithsourcecodearea = (AnchorPane) splitpanewithtextareas.getItems().get(0);
 			AnchorPane anchorpanewithtestcodearea = (AnchorPane) splitpanewithtextareas.getItems().get(1);
 			TextArea textareasourcecode = (TextArea) anchorpanewithsourcecodearea.getChildren().get(0); 
-			TextArea textareatestcode = (TextArea) anchorpanewithtestcodearea.getChildren().get(0); 
+			TextArea textareatestcode = (TextArea) anchorpanewithtestcodearea.getChildren().get(0);
 			textareatestcode.setText(testcode);
 			textareasourcecode.setText(sourcecode);
+			
 			scene = new Scene(tddtrainerview);
 						
 			primarystage.setScene(scene);
 			primarystage.show();
+			
+			if (TDDTViewController.getATDDMode()) {
+				final Stage acceptancewindow = new Stage();
+				acceptancewindow.initModality(Modality.NONE);
+				acceptancewindow.initOwner(primarystage);
+                VBox acceptanceVbox = new VBox(20);
+                acceptanceVbox.getChildren().add(new Text(akzeptanzcode));
+                Scene acceptanceScene = new Scene(acceptanceVbox, 300, 400);
+                acceptancewindow.setScene(acceptanceScene);
+                acceptancewindow.show();
+			}
 		} catch(IOException e) {
 			e.printStackTrace();
 		
 		}
+
 	}
 	
 }

@@ -17,6 +17,18 @@ public class LeapYearCheckTest {
 	}
 	
 }
+Akzeptanzcode
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class LeapYearAcceptanceTest {
+
+	@Test
+	public void testSmth() {
+	
+	}
+
+}
 next
 RomanNumberConverter
 Beschreibung
@@ -34,6 +46,18 @@ public class RomanNumberConverterTest {
 	public void testSmth() {
 			
 	}
+}
+Akzeptanzcode
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class RomanNumberAcceptanceTest {
+
+	@Test
+	public void testSmth() {
+	
+	}
+
 }
 end
 		
